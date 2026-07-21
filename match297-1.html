@@ -1,0 +1,266 @@
+<html>
+<head>
+<title>A2_Sec12_1000054905---MD.-YASIN-ISLAM-KHAN.txt</title>
+</head>
+<body bgcolor="white">
+<hr/>
+A2_sec19_24226048---ANIKA-TASNIM.txt<p></p><pre>
+﻿//lab1
+<a name="0"></a><font color="#FF0000"><a href="match297-0.html#0" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_10.gif"/></a>
+
+    public static String checkSimilar( Node building1, Node building2 ){
+         Node firstOne=building1;
+         Node secondOne=building2;
+
+
+         while(firstOne!=null &amp;&amp; secondOne!=null)
+            {
+              if(!firstOne.elem.equals(secondOne.elem))
+            {
+
+
+                return "NOT Similar";
+            }
+            firstOne=firstOne.next;
+            secondOne=secondOne.next;
+         }
+
+
+            if(firstOne==null &amp;&amp; secondOne==null)
+         {
+             return "Similar";
+           }else{
+              return "Not Similar";
+           }}
+
+
+
+
+//lab2
+public static Node organizeBooks(Node head, Integer[] popularity) {
+</font>       
+     int amount=popularity.length;
+     for(int k=0;k&lt;amount-1;k++)
+     {
+
+
+         Node recentt=head;
+     Node nextRecentt=head.next;
+    int myLimit=amount-k-1;
+ for(int h=0;h&lt;myLimit;h++){
+<a name="7"></a><font color="#0000FF"><a href="match297-0.html#7" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_2_4.gif"/></a>
+
+        if(popularity[h+1]&gt;popularity[h])
+            {
+            int recentPp=popularity[h];
+       popularity[h]=popularity[h+1];
+     popularity[h+1]=recentPp;
+</font>
+
+    Object tempBook=recentt.elem;
+      recentt.elem=nextRecentt.elem;
+    nextRecentt.elem=tempBook;
+
+
+        }
+
+
+        recentt=recentt.next;
+<a name="8"></a><font color="#00FFFF"><a href="match297-0.html#8" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_3_3.gif"/></a>
+
+         nextRecentt=nextRecentt.next;
+
+
+
+
+        } }
+        return head;
+    }
+
+
+//lab3
+public static Node alternateMerge( Node head1, Node head2 ){
+       
+       Node recentOne=head1;
+        Node recentTwo=head2;
+while(recentOne!=null &amp;&amp; recentTwo!=null)
+</font>       {
+        Node nextOne=recentOne.next;
+        Node nextTwo=recentTwo.next;
+ recentOne.next=recentTwo;
+
+
+
+
+
+
+        if(nextOne!=null){
+<a name="4"></a><font color="#FF00FF"><a href="match297-0.html#4" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_4_5.gif"/></a>
+
+recentTwo.next=nextOne;
+
+
+        }
+
+
+
+
+        recentOne=nextOne;
+         recentTwo=nextTwo;
+   
+    }
+
+
+        return head1;
+    }
+
+
+
+
+//lab4
+  public static Node idGenerator(Node head1, Node head2, Node head3) {
+       
+        Node whole=null;
+        Node apatoto=head1;
+ while(apatoto!=null){
+</font>    Node diffNode=new Node((int)apatoto.elem);
+         diffNode.next=whole;
+             whole=diffNode;
+<a name="1"></a><font color="#00FF00"><a href="match297-0.html#1" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_1_6.gif"/></a>
+
+         apatoto=apatoto.next;}
+  Node veryLast=whole;
+  while(veryLast.next!=null){
+        veryLast=veryLast.next;}
+
+
+         Node firstOne=head2;
+           Node secondOne=head3;
+while(firstOne!=null&amp;&amp; secondOne!=null)
+{
+         int totall=(int)firstOne.elem+(int)secondOne.elem;
+</font>      if(totall&gt;=10){
+<a name="2"></a><font color="#0000FF"><a href="match297-0.html#2" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_2_5.gif"/></a>
+
+            totall=totall%10;
+    }
+            Node anotherNode=new Node(totall);
+          veryLast.next=anotherNode;
+           veryLast=anotherNode;
+    firstOne=firstOne.next;
+    secondOne=secondOne.next;
+
+
+}
+
+
+        return whole;
+    }
+
+
+
+
+
+
+//lab5
+public static void sumOddAppend(Node dh) {
+</font> Node beforee=dh;
+      Node recentt=dh.next;
+      int theSum=0;
+     
+  while(recentt != dh){
+       
+    int myNum= (Integer) recentt.elem;
+        if(myNum%2 ==0){
+        beforee=recentt;
+        recentt=recentt.next;
+            }else
+              {
+            theSum+=myNum;
+          beforee.next=recentt.next;
+<a name="3"></a><font color="#00FFFF"><a href="match297-0.html#3" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_3_5.gif"/></a>
+
+             recentt=recentt.next;
+       
+      }}
+      Node newmyNode=new Node(theSum);
+        beforee.next=newmyNode;
+      newmyNode.next=dh;
+    }    
+
+
+
+
+//lab6
+public static void pairJoin(DNode dh1, DNode dh2) {
+       DNode firstRecentt=dh1.next;
+        DNode secondRecentt=dh2.next;
+</font>      DNode supperLast=null;
+       while(firstRecentt!=null &amp;&amp; secondRecentt!=null)
+    {
+        DNode firstReNext=firstRecentt.next;
+<a name="5"></a><font color="#FF0000"><a href="match297-0.html#5" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_5.gif"/></a>
+
+        DNode secondReNext=secondRecentt.next;
+
+
+        firstRecentt.next=secondRecentt;
+        secondRecentt.prev=firstRecentt;
+  secondRecentt.next=firstReNext;
+
+
+  if (firstReNext!=null)
+{
+      firstReNext.prev=secondRecentt;
+        }
+         supperLast=secondRecentt;
+ firstRecentt=firstReNext;
+</font>  secondRecentt=secondReNext;
+    }
+if(supperLast!=null){
+<a name="6"></a><font color="#00FF00"><a href="match297-0.html#6" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_1_5.gif"/></a>
+
+    supperLast.next=dh1;
+     dh1.prev=supperLast;
+}}
+   
+
+
+
+
+
+
+
+
+ //lab7 
+public static void rangeMove(DNode dh, int start, int end) {
+ DNode allLast=dh.prev;
+     DNode recentt=dh.next;
+
+
+       while(recentt!=dh) {
+           DNode nextOne=recentt.next;
+</font>    int mann=(Integer)recentt.elem;
+        if (mann&lt;start || mann&gt;end || recentt==allLast)
+        {
+            recentt=nextOne;
+              continue;
+        }
+    DNode prevNode=recentt.prev;
+     
+      prevNode.next=nextOne;
+      nextOne.prev=prevNode;
+     
+           recentt.next=dh;
+          recentt.prev=allLast;
+
+
+            allLast.next=recentt;
+              dh.prev=recentt;
+            allLast=recentt;
+       
+        recentt=nextOne;
+    }
+}</pre>
+</body>
+</html>

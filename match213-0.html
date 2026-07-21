@@ -1,0 +1,378 @@
+<html>
+<head>
+<title>A2_sec18_1000059755---SHARA-AHMED.txt</title>
+</head>
+<body bgcolor="white">
+<hr/>
+A2_sec18_1000059755---SHARA-AHMED.txt<p></p><pre>
+﻿LAB 2 PART1,
+1.public class AssignmentTask1 {
+
+
+    //Two heads are being passed onto this method
+    //and a String is expected as return
+    // After you're done coding MUST SUBMIT this method
+<a name="2"></a><font color="#0000FF"><a href="match213-1.html#2" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_2_5.gif"/></a>
+
+    public static String checkSimilar( Node building1, Node building2 ){
+        
+        Node current1 = building1;
+        Node current2 = building2;
+        
+        // Traverse both linked lists simultaneously
+        while (current1 != null &amp;&amp; current2 != null) {
+            
+            // Extract and compare the elements
+            // Because node.elem is an Object, we use .equals() to properly compare strings
+            if (!current1.elem.equals(current2.elem)) {
+                return "Not Similar";
+            }
+            
+            // Advance both pointers to the next node
+            current1 = current1.next;
+            current2 = current2.next;
+        }
+        
+        // After the loop, check if BOTH lists finished at the same time.
+        // If one pointer is null but the other isn't, the lengths are different.
+        if (current1 == null &amp;&amp; current2 == null) {
+</font>            return "Similar";
+        }
+        
+        return "Not Similar";
+    }
+}
+
+
+
+2.public class AssignmentTask2 {
+    
+    // MUST SUBMIT this method
+    public static Node organizeBooks(Node head, Integer[] popularity) {
+        // If the list is empty or has only one book, it's already sorted
+        if (head == null || head.next == null) {
+            return head;
+        }
+
+
+        boolean swapped;
+        
+        // Outer loop of bubble sort
+        do {
+            swapped = false;
+            Node current = head;
+            int index = 0; // Parallel index tracker for the popularity array
+
+
+            // Traverse the list comparing adjacent elements
+            while (current.next != null) {
+                // Descending order sort condition: 
+                // Swap if the current book's score is strictly less than the next book's score
+                if (popularity[index] &lt; popularity[index + 1]) {
+                    
+                    // 1. Swap the scores inside the parallel Integer array
+                    Integer tempScore = popularity[index];
+<a name="4"></a><font color="#FF00FF"><a href="match213-1.html#4" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_4_4.gif"/></a>
+
+                    popularity[index] = popularity[index + 1];
+                    popularity[index + 1] = tempScore;
+
+
+                    // 2. Swap the actual book titles (elem) inside the nodes
+                    Object tempTitle = current.elem;
+                    current.elem = current.next.elem;
+                    current.next.elem = tempTitle;
+
+
+                    swapped = true;
+</font>                }
+                
+                // Move both trackers forward
+                current = current.next;
+                index++;
+            }
+        } while (swapped); // Loop stops when a whole pass finishes without any swaps
+
+
+        // Return the original head pointer since node references remained structurally identical
+        return head;
+    }
+}
+
+3.public class AssignmentTask3 {
+    
+    // MUST SUBMIT this method
+<a name="0"></a><font color="#FF0000"><a href="match213-1.html#0" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_7.gif"/></a>
+
+    public static Node alternateMerge(Node head1, Node head2) {
+        // Edge cases: if one list is entirely empty, return the other
+        if (head1 == null) return head2;
+        if (head2 == null) return head1;
+
+
+        Node curr1 = head1;
+        Node curr2 = head2;
+
+
+        while (curr1 != null &amp;&amp; curr2 != null) {
+            // Save the next pointers for both lists before re-linking
+            Node next1 = curr1.next;
+            Node next2 = curr2.next;
+
+
+            // 1. Link current node of List 1 to current node of List 2
+            curr1.next = curr2;
+
+
+            // 2. Link current node of List 2 to the original next node of List 1
+            // But only if there actually IS a next node in List 1 left to process.
+            // If List 1 has run out, let curr2 naturally link to the rest of List 2.
+            if (next1 != null) {
+                curr2.next = next1;
+</font>            }
+
+
+            // Move the current trackers forward to their saved next positions
+            curr1 = next1;
+            curr2 = next2;
+        }
+
+
+        // The result always starts with the original head of list 1
+        return head1;
+    }
+}
+
+
+4.public class AssignmentTask4 {
+    
+    // MUST SUBMIT this method
+    public static Node idGenerator(Node head1, Node head2, Node head3) {
+        if (head1 == null) return null;
+
+
+        Node idHead = null;
+        Node idTail = null;
+
+
+        // 1. Process head1 to get the first 4 digits in REVERSE order
+        Node curr1 = head1;
+        while (curr1 != null) {
+            int val = (int) curr1.elem;
+            Node newNode = new Node(val, null);
+            
+            // To reverse, always insert the new node at the front (head)
+            if (idHead == null) {
+                idHead = newNode;
+                idTail = newNode; // Track the current tail for later appending
+            } else {
+                newNode.next = idHead;
+                idHead = newNode;
+            }
+<a name="6"></a><font color="#00FF00"><a href="match213-1.html#6" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_1_4.gif"/></a>
+
+            curr1 = curr1.next;
+        }
+
+
+        // 2. Process head2 and head3 simultaneously from the beginning
+        Node curr2 = head2;
+        Node curr3 = head3;
+
+
+        while (curr2 != null &amp;&amp; curr3 != null) {
+            int val2 = (int) curr2.elem;
+            int val3 = (int) curr3.elem;
+            
+            // Calculate sum and apply modulo 10 if necessary
+            int sum = val2 + val3;
+</font>            int digitToInsert = sum % 10;
+            
+            Node newNode = new Node(digitToInsert, null);
+            
+            // Append sequentially to the back of the growing list using idTail
+            if (idHead == null) { // Defensive check, though idHead won't be null here
+                idHead = newNode;
+                idTail = newNode;
+            } else {
+<a name="8"></a><font color="#00FFFF"><a href="match213-1.html#8" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_3_2.gif"/></a>
+
+                idTail.next = newNode;
+                idTail = newNode;
+            }
+            
+            curr2 = curr2.next;
+            curr3 = curr3.next;
+        }
+
+
+        // Return the front of the fully assembled 8-digit student ID linked list
+        return idHead;
+    }
+}
+
+
+
+
+LAB2 PART2
+</font>
+5.public class LabTask {
+
+
+    public static Node sumOddAppend(Node dummy) {
+        // If the list contains only the dummy node (empty list)
+        if (dummy == null || dummy.next == dummy) {
+            // Create the single allowed new node to store the sum (0)
+            Node sumNode = new Node(0, dummy);
+            dummy.next = sumNode;
+            return dummy;
+        }
+
+
+        int oddSum = 0;
+        Node prev = dummy;
+        Node current = dummy.next;
+
+
+        // Traverse until we wrap back around to the dummy head
+<a name="3"></a><font color="#00FFFF"><a href="match213-1.html#3" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_3_5.gif"/></a>
+
+        while (current != dummy) {
+            // Typecast the object value to int
+            int val = (int) current.elem;
+
+
+            if (val % 2 != 0) {
+                // It's an odd value: Add to the summation
+                oddSum += val;
+                
+                // Remove the current node by shifting the prev node's pointer forward
+                prev.next = current.next;
+            } else {
+                // It's an even value: Advance the prev pointer
+                prev = current;
+            }
+            // Move to the next node in the sequence
+            current = current.next;
+        }
+
+
+        // At this point, 'prev' points to the last node of the modified list.
+        // Create exactly 1 new node containing the total summation.
+        // It must point back to 'dummy' to keep the list circular.
+        Node sumNode = new Node(oddSum, dummy);
+</font>
+
+        // Append the new node to the end of the list
+        prev.next = sumNode;
+
+
+        return dummy;
+    }
+}
+6.public class AssignmentTask6 {
+
+
+    //SUBMIT ONLY THIS METHOD
+<a name="5"></a><font color="#FF0000"><a href="match213-1.html#5" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_4.gif"/></a>
+
+    public static void pairJoin(DNode dh1, DNode dh2) {
+        // If either list is empty (just dummy heads), there's nothing to interleave
+        if (dh1 == null || dh1.next == null || dh2 == null || dh2.next == null) {
+            return;
+        }
+
+
+        DNode curr1 = dh1.next; // First actual node of list 1 ("A")
+        DNode curr2 = dh2.next; // First actual node of list 2 ("E")
+</font>        
+        DNode lastTail = dh1;   // Tracks the tail of the freshly forming combined list
+
+
+        while (curr1 != null &amp;&amp; curr2 != null) {
+            // Save the next elements before breaking existing connections
+            DNode next1 = curr1.next;
+            DNode next2 = curr2.next;
+
+
+            // 1. Attach curr1 ("A") right after the last tail
+            lastTail.next = curr1;
+            curr1.prev = lastTail;
+            
+            // 2. Attach curr2 ("E") immediately right after curr1
+            curr1.next = curr2;
+            curr2.prev = curr1;
+
+
+            // 3. Update the last tail pointer to the newly added node (curr2)
+            lastTail = curr2;
+
+
+            // 4. Move to the next pairs in the original structures
+            curr1 = next1;
+            curr2 = next2;
+        }
+
+
+        // Make the final list Circular as expected by the driver code
+        lastTail.next = dh1;
+        dh1.prev = lastTail;
+    }
+}
+<a name="7"></a><font color="#0000FF"><a href="match213-1.html#7" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_2_2.gif"/></a>
+
+7.public class AssignmentTask7 {
+
+
+    //SUBMIT ONLY THIS METHOD
+    public static void rangeMove(DNode dh, int start, int end) {
+        if (dh == null || dh.next == dh) {
+            return; // Empty list
+</font>        }
+
+
+        // Store the original tail node of the list before we start moving elements.
+        // This ensures we don't end up processing the already moved elements in an infinite loop.
+        DNode originalTail = dh.prev;
+        
+        DNode current = dh.next;
+        boolean standardTraversalComplete = false;
+
+
+        while (!standardTraversalComplete) {
+            // Check if we have evaluated up to the original last element
+            if (current == originalTail) {
+                standardTraversalComplete = true;
+            }
+
+
+            // Save the next node before we break or shift current's pointers
+<a name="1"></a><font color="#00FF00"><a href="match213-1.html#1" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_1_6.gif"/></a>
+
+            DNode nextNode = current.next;
+            int val = (int) current.elem;
+
+
+            // Check if the current node value falls within the inclusive range
+            if (val &gt;= start &amp;&amp; val &lt;= end) {
+                // 1. Unlink current from its current position
+                current.prev.next = current.next;
+                current.next.prev = current.prev;
+
+
+                // 2. Insert current at the very back of the circular list (just before dh)
+                DNode actualTail = dh.prev;
+                
+                actualTail.next = current;
+                current.prev = actualTail;
+</font>                current.next = dh;
+                dh.prev = current;
+            }
+
+
+            current = nextNode;
+        }
+    }
+}</pre>
+</body>
+</html>

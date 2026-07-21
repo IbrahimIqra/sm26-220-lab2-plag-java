@@ -1,0 +1,159 @@
+<html>
+<head>
+<title>A2_Sec10_1000054259---MOHAMMAD-SHAYAN-HOSSAIN.txt</title>
+</head>
+<body bgcolor="white">
+<hr/>
+A2_Sec10_1000054259---MOHAMMAD-SHAYAN-HOSSAIN.txt<p></p><pre>
+//Lab Assignment 2
+
+//Task_01
+<a name="0"></a><font color="#FF0000"><a href="match9-1.html#0" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_86.gif"/></a>
+
+public static String checkSimilar(Node building1, Node building2 ){
+        while(building1 != null &amp; building2!= null){
+            if(!building1.elem.equals(building2.elem)){
+                return "Not Similar";
+            }
+            building1= building1.next;
+            building2= building2.next;
+        }
+        if(building1==null&amp;&amp; building2 == null){
+            return "Similar";
+        } 
+        return "Not Similar"; 
+    }
+
+
+//Task_02
+public static Node organizeBooks(Node head, Integer[] popularity) {
+        int inc=0;
+        Node x= head;
+        while(x!=null){
+            inc++;
+            x =x.next;
+        }
+    for (int i = 0; i &lt; inc; i++){
+        Node y = head;
+        int index = 0;
+        while (y!=null  &amp;&amp; y.next!=null) {
+            if(popularity[index]&lt;popularity[index+1]){
+                int z = popularity[index];
+                popularity[index] = popularity[index+1];
+                popularity[index+1]= z;
+
+                String tempT = (String) temp2.elem;
+                y.elem = y.next.elem;
+                y.next.elem = tempT;
+            }
+            y = y.next;
+            index++;
+        }
+    }
+        return head; 
+    }
+
+
+//Task_03
+public static Node alternateMerge( Node head1, Node head2 ){
+        Node temp1 = head1;
+        Node temp2 = head2;
+
+        while(temp1!=null &amp;&amp; temp2!=null){
+            Node next1= temp1.next;
+            Node next2= temp2.next;
+            temp1.next = temp2;
+            if (next1==null) {
+                break;
+            }
+            temp2.next=next1;
+            temp1=next1;
+            temp2=next2;
+        }
+        return head1;
+    }
+
+
+//Task_04
+public static Node idGenerator(Node head1, Node head2, Node head3) {
+        Node newH = null;
+        Node newT = null;
+        Node temp1 = head1;
+        while (temp1!=null) {
+        int value = (int) temp1.elem;
+        Node newNode = new Node(value, null);
+        if(newH == null){
+            newH = newNode;
+            newT = newNode;
+        } else{
+            newNode.next =newH;
+            newH = newNode;
+        }
+        temp1 = temp1.next;
+        }
+        Node temp2 = head2;
+        Node temp3 = head3;
+        while (temp2!=null &amp;&amp; temp3!=null) {
+            int value2 = (int) temp2.elem;
+            int value3 = (int) temp3.elem;
+            int sum = (value2 + value3)%10;
+            Node newNode = new Node(sum, null);
+            if(newH == null){
+                newH = newNode;
+                newT = newNode;
+            } else{
+                newT.next = newNode;
+                newT = newNode;
+            }
+
+            temp2 = temp2.next;
+            temp3 = temp3.next;
+        }
+        return newH; 
+ }
+
+
+
+//Task_05
+public static void sumOddAppend(Node dh) {
+        int sum = 0;
+        Node newLinkedList = dh;
+        Node temp = dh.next;
+        while(temp!=dh){
+            if((int)temp.elem%2 != 0){
+                sum += (int)temp.elem;
+                newLinkedList.next = temp.next;
+                temp = temp.next;
+            } else{
+                newLinkedList =temp;
+                temp= temp.next;
+            }
+        }
+        Node addNode = new Node(sum);
+            newLinkedList.next = addNode;
+            addNode.next = dh;
+    }
+
+//TASK_06
+public static void pairJoin(DNode dh1, DNode dh2){
+        DNode node1 = dh1.next;
+        DNode node2 = dh2.next;
+</font>        DNode tail= dh1;
+
+        while (node1 != null &amp;&amp; node2 != null) {
+            DNode node3 = node2;
+            node2 = node2.next;
+            node3.next = node1.next;
+            node3.prev = node1;
+            if (node1.next != null) {
+                node1.next.prev = node3;
+            }
+            node1.next = node3;
+            tail = node3;
+            node1 = node3.next;
+        }
+        tail.next = dh1;
+        dh1.prev = tail;
+    }</pre>
+</body>
+</html>

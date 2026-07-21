@@ -1,0 +1,240 @@
+<html>
+<head>
+<title>A2_Sec04_24201402---SOURAV-MONDAL.txt</title>
+</head>
+<body bgcolor="white">
+<hr/>
+A2_Sec04_24201402---SOURAV-MONDAL.txt<p></p><pre>
+//Lab Assignment 2 (Part 1)
+
+// AssignmentTask1: Building Blocks
+
+<a name="2"></a><font color="#0000FF"><a href="match256-1.html#2" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_2_8.gif"/></a>
+
+    public static String checkSimilar( Node building1, Node building2 ){
+
+        Node a = building1;
+        Node b = building2;
+
+        while(a != null &amp;&amp; b != null) {
+            if(!a.elem.equals(b.elem)) {
+                return "Not Similar";
+            }
+
+            a = a.next;
+            b = b.next;
+        }
+
+        if(a == null &amp;&amp; b == null) {
+            return "Similar";
+</font>        } else {
+            return "Not Similar";
+        }
+    }
+
+// AssignmentTask2: Organize Books
+
+    public static Node organizeBooks(Node head, Integer[] popularity) {
+
+        if(head == null) {
+            return null;
+        }
+
+        boolean kono_kichu_swapped_hoise = true;
+
+        while(kono_kichu_swapped_hoise) {
+            kono_kichu_swapped_hoise = false;
+            
+            Node current = head;
+            int index = 0;
+
+            while(current.next != null) {
+                if(popularity[index] &lt; popularity[index + 1]) {
+                    String title_hold_kore = (String)current.elem;
+
+                    current.elem = current.next.elem;
+                    current.next.elem = title_hold_kore;
+
+                    Integer score_hold_kore = popularity[index];
+
+                    popularity[index] = popularity[index + 1];
+                    popularity[index + 1] = score_hold_kore;
+
+                    kono_kichu_swapped_hoise = true;
+                }
+
+                current = current.next;
+                index++;
+            }
+        }
+
+        return head;
+    }
+
+// AssignmentTask3: Alternate Merge
+
+    public static Node alternateMerge( Node head1, Node head2 ){
+
+        Node walk1 = head1;
+        Node walk2 = head2;
+
+        while(walk1 != null &amp;&amp; walk2 != null) {
+            Node rest1 = walk1.next;
+            Node rest2 = walk2.next;
+
+            walk1.next = walk2;
+
+            if(rest1 != null) {
+                walk2.next = rest1;
+            }
+
+            walk1 = rest1;
+<a name="6"></a><font color="#00FF00"><a href="match256-1.html#6" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_1_3.gif"/></a>
+
+            walk2 = rest2;
+        }
+
+        return head1;
+    }
+
+// AssignmentTask4: ID Generator
+
+    public static Node idGenerator(Node head1, Node head2, Node head3) {
+
+        Node id_head = null;
+        Node cursor = head1;
+
+        while(cursor != null) {
+</font>            id_head = new Node((int) cursor.elem, id_head);
+            cursor = cursor.next;
+        }
+
+        Node tail = id_head;
+
+<a name="4"></a><font color="#FF00FF"><a href="match256-1.html#4" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_4_5.gif"/></a>
+
+        while(tail != null &amp;&amp; tail.next != null) {
+            tail = tail.next;
+        }
+
+        Node p2 = head2;
+        Node p3 = head3;
+
+        while(p2 != null &amp;&amp; p3 != null) {
+            int sob_eksathe = (int) p2.elem + (int) p3.elem;
+</font>            sob_eksathe = sob_eksathe % 10;
+
+            Node banailo = new Node(sob_eksathe, null);
+
+<a name="3"></a><font color="#00FFFF"><a href="match256-1.html#3" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_3_6.gif"/></a>
+
+            tail.next = banailo;
+            tail = banailo;
+            p2 = p2.next;
+            p3 = p3.next;
+        }
+
+        return id_head;
+    }
+
+//Lab Assignment 2 (Part 2)
+
+// AssignmentTask5: Sum Odd Append
+
+    public static void sumOddAppend(Node dh) {
+
+        int odd_er_total = 0;
+
+        Node previous = dh;
+        Node current = dh.next;
+</font>
+        while(current != dh) {
+            int value = (int) current.elem;
+
+            if(value % 2 != 0) {
+                odd_er_total += value;
+<a name="1"></a><font color="#00FF00"><a href="match256-1.html#1" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_1_10.gif"/></a>
+
+                previous.next = current.next;
+                current = current.next;
+            } else {
+                previous = current;
+                current = current.next;
+            }
+        }
+
+        Node node_er_sum = new Node(odd_er_total);
+        node_er_sum.next = dh;
+
+        previous.next = node_er_sum;
+    }
+
+// AssignmentTask6: Pair Join
+
+    public static void pairJoin(DNode dh1, DNode dh2) {
+
+        DNode tail = dh1;
+        DNode p1 = dh1.next;
+        DNode p2 = dh2.next;
+
+        while(p1 != null) {
+</font><a name="7"></a><font color="#0000FF"><a href="match256-1.html#7" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_2_3.gif"/></a>
+
+            DNode next1 = p1.next;
+            DNode next2 = p2.next;
+
+            tail.next = p1;
+            p1.prev = tail;
+            tail = p1;
+
+            tail.next = p2;
+</font>            p2.prev = tail;
+<a name="5"></a><font color="#FF0000"><a href="match256-1.html#5" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_4.gif"/></a>
+
+            tail = p2;
+
+            p1 = next1;
+            p2 = next2;
+        }
+
+        tail.next = dh1;
+        dh1.prev = tail;
+    }
+
+// AssignmentTask7: Range Move
+
+    public static void rangeMove(DNode dh, int start, int end) {
+</font>
+        DNode scan = dh.next;
+        int count = 0;
+
+        while(scan != dh) {
+            count++;
+<a name="0"></a><font color="#FF0000"><a href="match256-1.html#0" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_11.gif"/></a>
+
+            scan = scan.next;
+        }
+
+        DNode current = dh.next;
+
+        for(int i = 0; i &lt; count; i++) {
+            DNode next_up = current.next;
+            int value = (int) current.elem;
+
+            if(value &gt;= start &amp;&amp; value &lt;= end) {
+                current.prev.next = current.next;
+                current.next.prev = current.prev;
+
+                DNode back = dh.prev;
+
+                back.next = current;
+                current.prev = back;
+</font>                current.next = dh;
+                dh.prev = current;
+            }
+
+            current = next_up;
+        }
+    }</pre>
+</body>
+</html>

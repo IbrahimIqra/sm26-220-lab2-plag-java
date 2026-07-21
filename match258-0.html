@@ -1,0 +1,177 @@
+<html>
+<head>
+<title>A2_Sec08_1000054825---K.M-MAHIR-LABIB.txt</title>
+</head>
+<body bgcolor="white">
+<hr/>
+A2_Sec08_1000054825---K.M-MAHIR-LABIB.txt<p></p><pre>
+//AssignmentTASK01
+
+<a name="3"></a><font color="#00FFFF"><a href="match258-1.html#3" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_3_5.gif"/></a>
+
+  public static String checkSimilar( Node building1, Node building2 ){
+        
+       Node b1 = building1; 
+       Node b2 = building2; 
+
+       while(b1!= null &amp;&amp; b2!= null){
+</font>        String first = (String)b1.elem;
+         String second = (String)b2.elem;
+<a name="0"></a><font color="#FF0000"><a href="match258-1.html#0" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_38.gif"/></a>
+
+         if(!first.equals(second)){
+            return "Not Similiar" ;
+        
+         }
+         b1 = b1.next;
+         b2=b2.next;
+        }
+         
+        if(b1 != null || b2!=null){
+            return "Not similar" ; 
+        }
+
+       
+
+        return "Similar";
+    }
+
+
+//AssignmentTASK02
+
+ public static Node organizeBooks(Node head, Integer[] popularity) {
+        
+        int len = popularity.length;
+        
+        for(int i =0 ; i&lt; len-1; i++){
+            Node now = head; 
+            for(int j= 0 ;j&lt; len-1-i; j++){
+
+                if(popularity[j]&lt;popularity[j+1]){
+
+                    int temp = popularity[j];
+
+                    popularity[j]= popularity[j+1];
+
+                    popularity[j+1] = temp;
+
+
+
+                    Object tempbook = now.elem;
+
+                    now.elem = now.next.elem;
+                    
+                    now.next.elem = tempbook; 
+
+
+                }
+                now = now.next;
+
+            }
+
+        }
+
+        return head ; 
+
+    }
+
+//AssignmentTASK03
+
+ public static Node alternateMerge( Node head1, Node head2 ){
+        Node first_temp = head1;
+        Node sec_temp = head2;
+
+        while(first_temp!= null &amp;&amp; sec_temp != null){
+</font>
+            Node first_next = first_temp.next;
+            Node sec_next = sec_temp.next;
+
+            first_temp.next = sec_temp;
+<a name="2"></a><font color="#0000FF"><a href="match258-1.html#2" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_2_17.gif"/></a>
+
+            sec_temp.next= first_next;
+
+            first_temp = first_next;
+        sec_temp = sec_next;
+
+        }
+
+
+      return head1; 
+    }
+
+
+//AssignmentTASK04
+
+//AssignmentTASK05
+
+    public static void sumOddAppend(Node dh) {
+        
+        Node prev = dh;
+        Node now = dh.next;
+
+    int sum =0;
+    
+    
+
+    while(now != dh){
+
+
+        int current = (int)now.elem; 
+
+
+        if(current % 2!=0){
+            sum+=current;
+            prev.next= now.next;
+            now= prev.next; 
+
+        }
+        else{
+            prev = now;
+</font><a name="1"></a><font color="#00FF00"><a href="match258-1.html#1" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_1_21.gif"/></a>
+
+            now = now.next;
+        }
+    }
+    Node node1 = new Node(sum);
+    prev.next = node1;
+    node1.next= dh;
+
+    }
+
+
+//AssignmentTASK06
+
+  public static void pairJoin(DNode dh1, DNode dh2) {
+        DNode first_DLL = dh1.next;
+        DNode sec_DLL = dh2.next;
+        while (first_DLL!=null &amp;&amp; sec_DLL!= null){
+            DNode first_next = first_DLL.next;
+            DNode sec_next = sec_DLL.next;
+
+            first_DLL.next = sec_DLL;
+            sec_DLL.prev = first_DLL;
+
+            sec_DLL.next= first_next;
+      if(first_next!= null){
+            first_next.prev = sec_DLL;
+        }
+
+        
+        first_DLL =first_next;
+        sec_DLL =sec_next;
+</font>    }
+
+    DNode last =dh1.next;
+
+    while(last.next!= null){
+        last = last.next;
+    }
+
+    last.next = dh1;
+    dh1.prev = last;
+}
+
+</pre>
+</body>
+</html>

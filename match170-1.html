@@ -1,0 +1,184 @@
+<html>
+<head>
+<title>A2_Sec09_1000055121---ALVI-ASHRAFI-JOARDER.txt</title>
+</head>
+<body bgcolor="white">
+<hr/>
+A2_Sec15_1000055770---MD.-ISHRAF-RAHMAN-CHOWDHURY.txt<p></p><pre>
+//Task 01
+
+ int row = matrix.length;
+        int col = matrix[0].length;
+        
+        
+        int rotations = (examWeek - 1) % row;
+        
+
+        int currentRow = -1;
+<a name="2"></a><font color="#0000FF"><a href="match170-0.html#2" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_2_3.gif"/></a>
+
+        int currentCol = -1;
+        for (int i = 0; i &lt; row; i++){
+            for (int j = 0; j &lt; col; j++){
+</font>                if (matrix[i][j].equals("AA")){
+                    currentRow = i;
+                    currentCol = j;
+                    break;
+                }
+            }
+            if (currentRow != -1){ 
+                break;
+            }
+        }
+        
+        int newRow = (currentRow + rotations) % row;
+         
+        String[] tempRow = new String[col];
+        
+        for (int r = 0; r &lt; rotations; r++){
+           
+            for (int j = 0; j &lt; col; j++){
+                tempRow[j] = matrix[row - 1][j];
+            }
+            
+            for (int i = row - 1; i &gt; 0; i--){
+                for (int j = 0; j &lt; col; j++){
+                    matrix[i][j] = matrix[i - 1][j];
+                }
+            }
+            
+            for (int j = 0; j &lt; col; j++){
+                matrix[0][j] = tempRow[j];
+            }
+             }
+        
+       Arr.print2D(matrix);
+        
+        return newRow + 1;
+    }
+
+
+//Task 02
+
+<a name="4"></a><font color="#FF00FF"><a href="match170-0.html#4" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_4_2.gif"/></a>
+
+public static Integer[][] compressMatrix( Integer[][] matrix ){
+
+        
+    int row = matrix.length;
+    int col = matrix[0].length;
+    
+    int comp_row = row/2;
+</font><a name="5"></a><font color="#FF0000"><a href="match170-0.html#5" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_2.gif"/></a>
+
+    int comp_col = col/2;
+    
+    Integer[][] compressed = new Integer[comp_row][comp_col];
+    
+    for(int i = 0; i &lt; row; i += 2){
+</font>        for(int j = 0; j &lt; col; j+=2){
+            int sum = matrix[i][j] + matrix[i+1][j] + matrix[i][j+1] + matrix[i+1][j+1];
+        
+            compressed[i/2][j/2] = sum;
+        }
+    }
+    
+    return compressed;
+}
+
+//Task03
+
+
+        int row = arena.length;
+        int col = arena[0].length;
+        int tP = 0; //tp = total points
+        
+        
+<a name="1"></a><font color="#00FF00"><a href="match170-0.html#1" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_1_16.gif"/></a>
+
+        for (int i = 0; i &lt; row; i++) {
+            for (int j = 0; j &lt; col; j++) {
+               
+                if (arena[i][j] != 0 &amp;&amp; arena[i][j] % 50 == 0){
+                
+                    if (i - 1 &gt;= 0 &amp;&amp; arena[i-1][j] == 2){
+                        tP += 2;
+                    }
+
+                    if (i + 1 &lt; row &amp;&amp; arena[i+1][j] == 2){
+                        tP += 2;
+                    }
+                    if (j - 1 &gt;= 0 &amp;&amp; arena[i][j-1] == 2){
+                        tP += 2;
+                    }
+                    if (j + 1 &lt; col &amp;&amp; arena[i][j+1] == 2){
+                        tP += 2;
+</font>                    }
+                }
+            }
+        }
+        
+        System.out.print("Points Gained: " + tP + ". ");
+        if (tP &gt;= 10){
+            System.out.println("Your team has survived the game.");
+        } else{
+            System.out.println("Your team is out.");
+        }
+    }
+
+
+//Task04
+
+
+<a name="3"></a><font color="#00FFFF"><a href="match170-0.html#3" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_3_3.gif"/></a>
+
+        int n = board.length;
+        int layers = n/2;
+        
+        for (int layer = 0; layer &lt; layers; layer++){
+            int rotation = layers - layer;
+</font>         
+            for (int r = 0; r &lt; rotation; r++){
+                int start = layer;
+                int end = n - 1 - layer;
+                
+<a name="0"></a><font color="#FF0000"><a href="match170-0.html#0" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_19.gif"/></a>
+
+                char temp = board[start][start];
+             
+                for(int i = start; i &lt; end; i++){
+                    board[i][start] = board[i+1][start];
+                }
+             
+                for(int j = start; j &lt; end; j++){
+                    board[end][j] = board[end][j+1];
+                }
+       
+                for(int i = end; i &gt; start; i--){
+                    board[i][end] = board[i-1][end];
+                }
+    
+                for(int j = end; j &gt; start + 1; j--){
+                    board[start][j] = board[start][j-1];
+                }
+   
+                board[start][start+1] = temp;
+            }
+        }
+
+        for(int i = 0; i &lt; n; i++){
+            for (int j = 0; j &lt; n; j++){
+</font>                if(board[i][j] != '.'){
+                    System.out.print(board[i][j]);
+                }
+            }
+        }
+        System.out.println();
+
+    }
+
+
+
+</pre>
+</body>
+</html>

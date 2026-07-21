@@ -1,0 +1,224 @@
+<html>
+<head>
+<title>A2_Sec11_24121142---SAHIRA-HUMAIRA-HRIDIKA.txt</title>
+</head>
+<body bgcolor="white">
+<hr/>
+A2_Sec11_24121142---SAHIRA-HUMAIRA-HRIDIKA.txt<p></p><pre>
+//Assignment2_Part-01
+//task01
+
+<a name="0"></a><font color="#FF0000"><a href="match229-1.html#0" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_10.gif"/></a>
+
+public static String checkSimilar( Node building1, Node building2 ){
+        
+        //You're not suppose to create any new Linked List for this task
+        
+        //TODO
+        Node t1 =building1;
+        Node t2= building2 ;
+        while(t1!= null&amp;&amp;t2!=null){
+            if(!t1.elem.equals(t2.elem)){
+                return "not similar ";
+            }
+            t1= t1.next;
+            t2 =t2.next ;
+        }
+        if(t1!= null|| t2!=null){
+            return " not similar";
+        }
+
+        //Once you're ready to return the String delete the following line
+        return " similar";
+    }
+
+//task02
+
+public static Node organizeBooks(Node head, Integer[] popularity) {
+</font>        
+        //TO DO
+        Node now= head;
+        int  num=0;
+        while(now !=null){
+            Node max= now;
+            int idx= num;
+<a name="4"></a><font color="#FF00FF"><a href="match229-1.html#4" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_4_6.gif"/></a>
+
+            Node t= now.next;
+            int num1 =num+ 1;
+            while(t!= null){
+                if(popularity[num1]&gt;popularity[idx]){
+                    max= t;
+                    idx =num1;
+                }
+                t=t.next;
+                num1 ++;
+            }
+            if(max!= now){
+                String tb= (String) now.elem;
+</font><a name="5"></a><font color="#FF0000"><a href="match229-1.html#5" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_6.gif"/></a>
+
+                now.elem= max.elem ;
+                max.elem=tb;
+                int temp =popularity[num];
+                popularity[num]= popularity[idx];
+                popularity[idx]= temp;
+            }
+            now=now.next;
+</font>            num ++;
+        }
+
+        return head; // Remove this when you're ready to return the new head
+    }
+
+//task03
+
+public static Node alternateMerge( Node head1, Node head2 ){
+        
+        //You’re NOT ALLOWED to create a new singly linked list for this task
+
+        //TO DO
+        Node t1=head1;
+        Node t2 =head2;
+<a name="1"></a><font color="#00FF00"><a href="match229-1.html#1" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_1_9.gif"/></a>
+
+        while(t1!=null&amp;&amp;t2!= null){
+            Node c1=t1.next;
+            Node c2= t2.next;
+            t1.next=t2;
+            if(c1== null){
+                break ;
+            }
+            t2.next= c1;
+            t1 =c1;
+            t2= c2;
+        }
+
+
+
+        //remove the following line when returning the Head of the modified LinkedList
+        return head1;
+    }
+
+//task04
+
+ public static Node idGenerator(Node head1, Node head2, Node head3) {
+        
+        //TO DO
+        Node nhead=null;
+        Node t=null;
+</font>        Node tp= head1;
+        while(tp!=null){
+            Node nNode=new Node((Integer)tp.elem);
+            nNode.next=nhead;
+            if(t==null){
+                t= nNode;
+            }
+<a name="3"></a><font color="#00FFFF"><a href="match229-1.html#3" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_3_7.gif"/></a>
+
+            tp=tp.next;
+        }
+        Node tp1=head2;
+        Node tp2= head3;
+        while(tp1!=null&amp;&amp;tp2!= null){
+            int s= (Integer)tp1.elem+ (Integer) tp2.elem ;
+            if(s&gt;=10){
+                s=s%10;
+            }
+            Node nNode  =new Node(s);
+</font>            t.next= nNode;
+            t=nNode;
+            tp1=tp1.next;
+            tp2= tp2.next;
+        }
+        //Hint: the Node elements are actually Object, you can type cast them
+        //      into int or Integer like the following:
+        //        (int)n.elem  or  (Integer)n.elem
+
+        return nhead; // Remove this when you're ready to return the new head
+    }
+
+//Assignment2_Part02
+
+//task05
+
+//SUBMIT ONLY THIS METHOD
+    public static void sumOddAppend(Node dh) {
+        // TO DO
+        Node prev= dh;
+        Node now =dh.next;
+        int s=0;
+        while(now!=dh){
+            if((int)now.elem%2!=0){
+                s+=(int) now.elem;
+                prev.next=now.next;
+                now= prev.next;
+            }
+            else{
+                prev=now;
+<a name="2"></a><font color="#0000FF"><a href="match229-1.html#2" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_2_7.gif"/></a>
+
+                now=now.next;
+            }
+
+            
+        }
+        Node nNode= new Node(s);
+        prev.next= nNode;
+        nNode.next=dh;
+
+    }
+
+//task06
+
+public static void pairJoin(DNode dh1, DNode dh2) {
+        // TO DO
+        DNode t1=dh1.next;
+        DNode t2= dh2.next;
+        while(t1!=null&amp;&amp;t2!= null){
+</font><a name="7"></a><font color="#0000FF"><a href="match229-1.html#7" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_2_3.gif"/></a>
+
+            DNode n1= t1.next;
+            DNode n2 = t2.next;
+            t1.next=t2;
+            t2.prev=t1;
+            if(n1!=null){
+</font>                t2.next=n1;
+                n1.prev= t2;
+            }
+            t1=n1;
+            t2= n2;
+        }
+
+    }
+
+//task07
+
+public static void rangeMove(DNode dh, int start, int end) {
+        // TO DO
+<a name="6"></a><font color="#00FF00"><a href="match229-1.html#6" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_1_5.gif"/></a>
+
+        DNode ta =dh.prev;
+        DNode now=dh.next;
+        while(now!= dh){
+            DNode n =now.next;
+            int val=(int)now.elem;
+            if(val&gt;=start&amp;&amp; val&lt;=end &amp;&amp;now!=ta){
+</font>                now.prev.next= now.next;
+                now.next.prev=now.prev;
+                ta.next=now;
+                now.prev =ta;
+                now.next=dh;
+                dh.prev = now;
+                ta=now;
+            }
+     
+            now= n;
+        }
+    }
+
+//taskdone
+
+</pre>
+</body>
+</html>

@@ -1,0 +1,841 @@
+<html>
+<head>
+<title>A2_SEC11_24301393---RIFAH-TASNIA-ATOSHE.txt</title>
+</head>
+<body bgcolor="white">
+<hr/>
+A2_SEC11_24301393---RIFAH-TASNIA-ATOSHE.txt<p></p><pre>
+// 1
+
+public class Linked{
+
+    Node head;
+    Node tail;
+    int length;
+
+
+    class Node{
+
+        String val;
+        Node next;
+        
+        public Node (String val){           
+            this.val = val; 
+        }
+    }
+
+        public void append (String val){
+        Node newNode = new Node(val);
+
+        if(length == 0){
+            head = newNode;
+            tail = newNode;
+        }
+        
+        else{
+            tail.next = newNode;
+            tail = newNode;
+        }
+        length++;
+    
+    }
+
+    public boolean compare(Linked other){
+
+        Node a = this.head;
+        Node b = other.head;
+
+        while(a!=null &amp;&amp; b!= null){
+        if(!a.val.equals(b.val)){     
+<a name="11"></a><font color="#00FF00"><a href="match28-1.html#11" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_1_1.gif"/></a>
+
+        return false;
+        }
+
+        a = a.next;
+        b = b.next;
+
+    }
+        return a == null &amp;&amp; b == null;
+        }
+
+
+
+        public void print(){
+</font>        Node current = head;
+        while(current!=null){
+        System.out.println(current.val);
+
+        current = current.next;
+
+        }
+
+
+
+        }
+        
+    }
+
+
+ public class Main{
+<a name="0"></a><font color="#FF0000"><a href="match28-1.html#0" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_4.gif"/></a>
+
+    public static void main(String[] args) {
+
+        Linked a = new Linked();
+
+        a.append("red");
+        a.append(" green ");
+        a.append("yellow");
+        a.append("red");
+        a.append("blue");
+        a.append("green");
+
+
+
+        Linked b = new Linked();
+
+        b.append("red");
+        b.append(" green ");
+        b.append("red");
+        b.append("red");
+        b.append("blue");
+        b.append("green");
+</font>
+        if(a.compare(b)){
+            System.out.println("similar");
+        }
+        else{
+            System.out.println("not similar");
+        }
+
+    }
+}
+
+
+
+// 2
+
+public class organize{
+ 
+    static class Node{
+
+        String title;
+        Node next;
+
+        Node (String title){           
+            this.title = title; 
+            this.next = null;
+        }
+    }
+
+        public static Node organizeBooks(Node head, int[] popularity){
+
+        if(head == null || head.next == null){ 
+        return head;
+        }
+        boolean swp = true;
+
+        while(swp){
+        swp = false;
+        Node cur = head;
+        int i = 0;
+
+        while(cur.next != null){
+            if(popularity[i] &lt; popularity[i+1]){
+                // swap
+                String temp = cur.title;
+                cur.title = cur.next.title;
+                cur.next.title = temp;
+
+                int temp1 = popularity[i];
+                popularity[i] = popularity[i+1];
+                popularity[i+1] = temp1;
+
+                swp = true;
+
+            }
+            cur = cur.next;
+            i++;
+        }
+
+    }
+
+                return head;
+    }
+
+        public static void print(Node head){
+<a name="3"></a><font color="#00FFFF"><a href="match28-1.html#3" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_3_2.gif"/></a>
+
+        Node cur = head;
+        while(cur!=null){
+        System.out.print(cur.title);
+            if (cur.next != null) {
+            System.out.print(" ➙ ");
+            }
+            cur = cur.next;
+        }
+
+        System.out.println();
+
+    }
+
+    
+        public static Node build(String[] title){
+</font><a name="4"></a><font color="#FF00FF"><a href="match28-1.html#4" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_4_2.gif"/></a>
+
+        Node head = new Node(title[0]);
+        Node cur = head;
+
+        for(int i = 1; i &lt; title.length; i++){
+        cur.next = new Node(title[i]);
+        cur = cur.next;
+</font>        }
+<a name="2"></a><font color="#0000FF"><a href="match28-1.html#2" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_2_2.gif"/></a>
+
+        return head;
+    }
+
+        public static void main(String[] args) {
+
+        String[] title = {"Hamlet",  "Persuasion", "It", "Dracula" , "Beloved"};
+        int[] popularity = {7, 9, 9, 6, 7};
+
+        Node head = build(title);
+
+        print(head);
+</font>
+        head = organizeBooks(head, popularity);
+
+        print(head);
+
+
+
+        }
+    }
+    
+  
+
+
+    
+    
+
+
+// 3
+
+
+
+public class alternate {
+
+    int a;
+    Node next;
+
+        class Node{
+
+        Node(int a){
+        this.a = a;
+        this.next = null;
+        }
+    }
+
+
+    class LinkedList{
+
+        Node buildList(int[] arr){
+
+<a name="5"></a><font color="#FF0000"><a href="match28-1.html#5" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_2.gif"/></a>
+
+        Node dum = new Node(arr[0]);
+        Node cur = dum;
+
+        for(int i = 0; i &lt; arr.length; i++){
+        cur.next = new Node(arr[i]);
+        cur = cur.next;
+</font>        }
+        return dum.next;
+   }
+
+
+
+  }
+
+
+
+
+    static void void print( Node head ){
+
+        Node cur  = head;
+        while(cur!=null){
+            System.out.println(x);
+
+            cur = cur.next;
+        }
+
+
+            System.out.println(" none");
+
+    }
+
+
+
+
+
+
+        static Node alternate_merge (Node head1,  Node head2) {
+
+
+        Node cur1 = head1;
+        Node cur2 = head2;
+
+
+
+        while (cur1 != null  &amp;&amp;   cur2 != null) {
+
+
+            Node next1 = cur1.next;
+            Node next2 = cur2.next;
+
+            curr1.next = curr2;
+
+
+            if ( next1 != null) {
+
+                cur2.next = next1;
+            }
+
+
+            cur1 = next1;
+            cur2 = next2;
+
+
+        }
+
+        return head1;
+    }
+
+
+
+}
+
+
+
+
+
+    public class Tester {
+
+    public static void main(String[] args) {
+
+
+        Node head1 =   LinkedList.buildList(new int[] {1, 2, 6, 8, 11} );
+        Node head2 =   LinkedList.buildList(new int[]  {5, 7, 3, 9, 4} );
+ 
+
+        Node res = L. inkedList.alternate_merge(head1, head2);
+
+
+        LinkedList.printList(res);
+
+
+     
+    }
+
+
+}
+
+
+
+
+
+
+// 4
+
+
+class Node {
+
+    int data;
+    Node next;
+
+    Node(int a) {
+
+        this.a = a;
+        this.next = null;
+
+
+    }
+
+
+}
+
+
+public class Main {
+
+    static class Node {
+
+
+        int x;
+        Node next;
+        Node(int x) { 
+
+      this.x = x;
+
+     }
+
+
+ }
+
+
+
+<a name="1"></a><font color="#00FF00"><a href="match28-1.html#1" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_1_3.gif"/></a>
+
+    static Node tail;
+
+
+    public static void main(  String[] args ) {
+
+
+
+        Node list1 = buildList( new int[]{ 0, 3, 2, 2} );
+        Node list2 = buildList( new int[] {5, 2, 2, 1} ) ;
+        Node list3 = buildList(new int[]{ 4, 3, 2, 1} ) ;
+</font>
+
+        Node result1 = idGenerator( list1, list2, list3 );
+
+
+
+        System.out.print(" outpur ");
+
+        printList(result1);
+
+
+
+
+    }
+
+
+
+
+    public static Node idGenerator(Node head1, Node head2, Node head3) {
+
+
+        Node dum = new Node(-1);
+        tail = dum;
+
+
+
+        Node p2 = head2;
+        
+<a name="9"></a><font color="#FF00FF"><a href="match28-1.html#9" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_4_1.gif"/></a>
+
+        Node p3 = head3;
+
+
+        while (p2 != null &amp;&amp; p3 != null) {
+
+
+            int sum = p2.data + p3.data;
+
+
+
+            if (sum &gt;= 10){
+
+            sum = sum % 10;
+            appendNode(sum);
+</font>
+            p2 = p2.next;
+            p3 = p3.next;
+
+
+
+
+            }
+      }
+
+        return dum.next; 
+
+
+    }
+
+
+
+
+    private static void reverseAppend(Node node) {
+
+
+        if (node == null) return;
+
+        reverseAppend(node.next);
+        appendNode(node.data);
+
+
+    }
+
+
+
+
+
+    private static void appendNode(int val) {
+
+        tail.next = new Node(val);
+        tail = tail.next;
+
+
+    }
+
+
+
+
+
+    static Node buildList(  int[] values ) {
+
+<a name="6"></a><font color="#00FF00"><a href="match28-1.html#6" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_1_2.gif"/></a>
+
+        Node head = new Node(val[0]);
+
+
+        Node cur = head;
+
+        for (int i = 1; i &lt; val.length; i++) {
+
+            cur.next = new Node(val[i]);
+            cur= cur.next;
+</font>
+
+
+
+
+        }
+
+
+        return head;
+
+
+    }
+
+
+
+    static void printList(Node head) {
+    Node cur = head;
+
+
+           while (cur != null) {
+
+<a name="10"></a><font color="#FF0000"><a href="match28-1.html#10" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_1.gif"/></a>
+
+           System.out.print(cur.data);
+
+
+             if (cur.next  !=   null) {
+             System.out.print(" &gt; ");
+             cur = cur.next;
+
+   }
+
+}
+
+
+
+
+
+        System.out.println();
+</font>
+    }
+
+
+
+
+
+}
+
+
+
+
+
+
+
+// circular linked list
+
+// 5
+
+
+   static int sumOddAppend(Node dum) {
+
+
+    Node prev = dum;
+    Node cur = dum.next;
+    int sum = 0;
+
+
+    while (cur  != dum  ) {
+
+        if (cur.data % 2 != 0) {
+
+            sum +=  cur.data;
+            prev.next = cur.next;   // unlin
+            curr = curr.next;
+
+        } 
+
+         else {
+
+            prev = cur;
+            cur = cur.next;
+        }
+
+
+
+
+    }
+
+
+
+
+
+    if ( sum != 0) {
+
+
+        Node newNode = new Node(sum);  
+
+
+        prev.next = newNode;
+        newNode.next = dum;      
+
+
+    }
+
+
+
+
+    return sum;
+
+
+
+
+}
+
+
+
+
+
+
+// 6
+
+
+   class DNode {
+
+
+    int x;
+
+
+    DNode next;
+    DNode prev;
+
+
+    DNode(int data) {
+
+       this.data = data; 
+
+
+   }
+
+
+}
+
+
+   static void pairJoin(DNode temp1, DNode temp2) {
+
+
+
+    DNode cur1 = temp1.next;
+    DNode cur2 = temp2.next;
+
+
+    while (cur1 != null   &amp;&amp;.  cur2 != null) {
+
+
+        DNode next1 = cur1.next;
+        DNode next2 = cur2.next;
+
+
+
+        cur1.next = cur2;
+
+         cur2.prev = cur1;
+         curr2.next = next1;
+
+
+        if (next1 != null) {
+        next1.prev = cur2;
+
+        }
+
+
+        cur1 = next1;
+        cur2 = next2;
+
+    }
+
+
+
+
+}
+
+
+
+
+
+
+
+// 7
+
+
+
+
+    static class Node {
+
+         int data;
+        Node next, prev;
+
+
+        Node(int data) { 
+
+         this.data = data;
+
+
+ }
+
+
+}
+
+ 
+
+    public class Main{
+    public static void main(String[] args) {
+
+        Node dum = new Node(-1); 
+
+
+
+        int[] val = {5, 3, 7, 1, 9, 6, 2, 4};
+<a name="8"></a><font color="#00FFFF"><a href="match28-1.html#8" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_3_2.gif"/></a>
+
+         Node last = dummyHead;
+
+
+          for (int v : val ) {
+
+            Node node = new Node(v);
+
+              last.next = node;
+              node.prev = last;
+               last = node;
+
+        }
+
+
+
+
+        last.next = dum;
+</font>        dum.prev = last;
+
+        System.out.print(" before ");
+
+        printList(dum);
+
+
+
+
+
+        rangeMove(dummyHead, 5, 7);
+
+        System.out.print("  after ");
+        printList(dum);
+
+
+
+    }
+
+
+
+
+    public static void rangeMove(Node dum, int start, int end) {
+
+        int count = 0;
+        Node temp = dum.next;
+
+
+        while (temp != dum ) {
+            count++;
+            temp = temp.next;
+
+
+        }
+
+        Node cur = dum.next;
+
+
+        for (int i = 0;  i &lt; count;  i++) {
+<a name="7"></a><font color="#0000FF"><a href="match28-1.html#7" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_2_2.gif"/></a>
+
+       Node next = cur.next;
+
+
+           
+          if (cur.data &gt;= start   &amp;&amp;  cur.data &lt;= end) {
+            
+                cur.prev.next = cur.next;
+                cur.next.prev = cur.prev;
+</font>
+    
+                Node lastNode = dum.prev;
+                lastNode.next = cur;
+
+
+
+
+                cur.prev = lastNode;
+                cur.next = dum;
+                dum.prev = cur;
+
+            }
+ 
+
+            cur = next;
+        }
+
+
+
+    }
+
+
+
+
+    static void printList(Node dum) {
+
+
+        Node cur = dum.next;
+
+        System.out.print(" x - ");
+
+
+        while (cur != dum) {
+
+            System.out.print(cur.data + " -&gt; ");
+            cur = cur.next;
+        }
+
+
+
+        System.out.println(" back to x ”);
+
+
+    }
+
+
+
+
+}
+
+</pre>
+</body>
+</html>

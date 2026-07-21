@@ -1,0 +1,196 @@
+<html>
+<head>
+<title>A2_Sec07_24301168---MD.-ADIB-HUSSAIN.txt</title>
+</head>
+<body bgcolor="white">
+<hr/>
+A2_Sec07_24301168---MD.-ADIB-HUSSAIN.txt<p></p><pre>
+##task 1
+public static String checkSimilar( Node building1, Node building2 ){
+
+    Node b1 = building1;
+    Node b2 = building2;
+
+    while (b1 != null &amp;&amp; b2 != null) {
+        if(!b1.elem.equals(b2.elem)) {
+<a name="4"></a><font color="#FF00FF"><a href="match72-1.html#4" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_4_3.gif"/></a>
+
+            return "Not Similar";
+        }
+        b1 = b1.next;
+        b2 = b2.next;
+    }
+        if(b1 == null &amp;&amp; b2 == null) {
+            return "Similar";
+        }else{
+            return "Not Similar";
+</font>        }
+}
+
+##task 2 
+<a name="0"></a><font color="#FF0000"><a href="match72-1.html#0" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_17.gif"/></a>
+
+public static Node organizeBooks(Node head, Integer[] popularity) {
+        int n = popularity.length;
+
+        for(int i=0; i&lt;n-1; i++){
+            Node current = head;
+            Node nextNode = current.next;
+            for(int j=0; j&lt;n-i-1; j++){
+                if(popularity[j] &lt; popularity[j+1]){
+                    int currentPopularity = popularity[j];
+                    popularity[j] = popularity[j+1];
+                    popularity[j+1] = currentPopularity;
+
+                    Object temp = current.elem;
+                    current.elem = nextNode.elem;
+                    nextNode.elem = temp;
+                }
+                current = current.next;
+                nextNode = current.next;
+            }
+        }
+        return head;
+</font>    }
+## task3 
+<a name="1"></a><font color="#00FF00"><a href="match72-1.html#1" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_1_10.gif"/></a>
+
+public static Node alternateMerge( Node head1, Node head2 ){
+        if (head1 == null) return head2;
+        if (head2 == null) return head1;
+    
+        Node temp1 = head1;
+        Node temp2 = head2;
+        while(temp1!=null &amp;&amp; temp2!=null){
+            Node front = temp1.next;
+            temp1.next = temp2;
+            Node front2 = temp2.next;
+            temp2.next = front;
+            temp1 = front;
+            temp2 = front2;
+        }
+        return head1;
+</font>    }
+
+##task4
+<a name="2"></a><font color="#0000FF"><a href="match72-1.html#2" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_2_10.gif"/></a>
+
+public static Node idGenerator(Node head1, Node head2, Node head3) {
+        Node curr1 = head1;
+        Node prev = null;
+        while (curr1 != null) {
+            Node front =curr1.next;
+            curr1.next =prev;
+            prev =curr1;
+            curr1 =front;
+        }
+
+        Node dummy =new Node(-1);
+        Node currDummy =dummy;
+        Node temp2 =head2;
+        Node temp3 =head3;
+
+        while (temp2 != null &amp;&amp; temp3 != null) {
+</font>            int sum =(temp2.elem + temp3.elem) % 10;
+            Node newNode = new Node(sum);
+            currDummy.next =newNode;
+            currDummy =newNode;
+            temp2 =temp2.next;
+            temp3 = emp3.next;
+        }
+        
+        if (prev == null) {
+<a name="5"></a><font color="#FF0000"><a href="match72-1.html#5" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_3.gif"/></a>
+
+            return dummy.next;
+        }
+        
+        Node current = prev;
+        while (current.next != null) {
+            current = current.next;
+        }
+        current.next = dummy.next;
+
+        return prev;
+</font>    }
+
+##task5
+
+public static void sumOddAppend(Node dh){
+        int oddSum = 0;
+        Node prev = dh;
+        Node curr = dh.next;
+
+        while (curr != dh) {
+            int value = (int) curr.elem;
+
+            if (value % 2 != 0) {
+                oddSum += value;
+<a name="6"></a><font color="#00FF00"><a href="match72-1.html#6" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_1_3.gif"/></a>
+
+                prev.next = curr.next;
+            } else {
+                prev = curr;
+            }
+            curr = curr.next;
+        }
+
+        Node sumNode = new Node(oddSum);
+        sumNode.next = dh;
+        prev.next = sumNode;
+</font>    }
+##task6
+
+<a name="3"></a><font color="#00FFFF"><a href="match72-1.html#3" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_3_9.gif"/></a>
+
+public static void pairJoin(DNode dh1, DNode dh2){
+        DNode c1 = dh1.next;
+        DNode c2 = dh2.next;
+
+        while (c1 != dh1){
+            DNode n1 = c1.next;
+            DNode n2 = c2.next;
+
+            c1.next = c2;
+            c2.prev = c1;
+
+            c2.next = n1;
+            n1.prev = c2;
+            
+            c1 = n1;
+            c2 = n2;
+</font>        }
+    }
+
+##task7
+
+public static void rangeMove(DNode dh, int start, int end){
+        DNode lastNode = dh.prev;
+        DNode oriEnd = lastNode;
+        DNode curr = dh.next;
+
+        while (curr != oriEnd.next) {
+            DNode nextNode = curr.next;
+            int value = (int) curr.elem;
+
+            if (value &gt;= start &amp;&amp; value &lt;= end) {
+                if (curr == oriEnd) {
+                    oriEnd = origEnd.prev;
+                }
+
+                curr.prev.next = curr.next;
+                curr.next.prev = curr.prev;
+
+                lastNode.next = curr;
+                curr.prev = lastNode;
+                curr.next = dh;
+                dh.prev = curr;
+
+                lastNode = curr;
+            }
+
+            curr = nextNode;
+        }
+    }</pre>
+</body>
+</html>

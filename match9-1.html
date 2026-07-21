@@ -1,0 +1,185 @@
+<html>
+<head>
+<title>A2_Sec10_1000054259---MOHAMMAD-SHAYAN-HOSSAIN.txt</title>
+</head>
+<body bgcolor="white">
+<hr/>
+A2_Sec04_1000054596---MIHRAN-AHSAN.txt<p></p><pre>
+//Task_01
+<a name="0"></a><font color="#FF0000"><a href="match9-0.html#0" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_73.gif"/></a>
+
+public static String checkSimilar( Node building1, Node building2 ){
+        //TODO
+        while(building1 != null &amp; building2!= null){
+            if(!building1.elem.equals(building2.elem)){
+                return "Not Similar";
+            }
+            building1=building1.next;
+            building2=building2.next;
+        }
+        if(building1 == null &amp;&amp; building2 == null){
+            return "Similar";
+        } 
+        return "Not Similar"; 
+    }
+
+//Task_02
+public static Node organizeBooks(Node head, Integer[] popularity) {
+        
+        //TO DO
+        int count = 0;
+        Node temp = head;
+        while(temp!=null){
+            count++;
+            temp = temp.next;
+        }
+
+    for (int i = 0; i &lt; count; i++) {
+        Node temp2 = head;
+        int index = 0;
+        while (temp2!=null &amp;&amp; temp2.next!=null) {
+            if(popularity[index]&lt;popularity[index+1]){
+                int temp3 = popularity[index];
+                popularity[index] = popularity[index+1];
+                popularity[index+1] = temp3;
+
+                String tempT = (String) temp2.elem;
+                temp2.elem = temp2.next.elem;
+                temp2.next.elem = tempT;
+            }
+            temp2 = temp2.next;
+            index++;
+        }
+    }
+        return head; 
+    }
+
+//Task_03
+public static Node alternateMerge( Node head1, Node head2 ){
+        Node temp1 = head1;
+        Node temp2 = head2;
+
+        while(temp1!=null &amp;&amp; temp2!=null){
+            Node next1 = temp1.next;
+            Node next2 = temp2.next;
+
+            temp1.next = temp2;
+            if (next1==null) {
+                break;
+            }
+            temp2.next = next1;
+            temp1 = next1;
+            temp2 = next2;
+        }
+        return head1;
+    }
+
+//Task_04
+public static Node idGenerator(Node head1, Node head2, Node head3) {
+        Node newH = null;
+        Node newT = null;
+
+        Node temp1 = head1;
+        while (temp1!=null) {
+
+        int value = (int) temp1.elem;
+        Node newNode = new Node(value, null);
+        if(newH == null){
+            newH = newNode;
+            newT = newNode;
+        } else{
+            newNode.next =newH;
+            newH = newNode;
+        }
+        temp1 = temp1.next;
+        }
+        Node temp2 = head2;
+        Node temp3 = head3;
+        while (temp2!=null &amp;&amp; temp3!=null) {
+            int value2 = (int) temp2.elem;
+            int value3 = (int) temp3.elem;
+            int sum = (value2 + value3)%10;
+            Node newNode = new Node(sum, null);
+            if(newH==null){
+                newH = newNode;
+                newT = newNode;
+            } else{
+                newT.next = newNode;
+                newT = newNode;
+            }
+
+            temp2 = temp2.next;
+            temp3 = temp3.next;
+        }
+        return newH; 
+    }
+
+//Task_05
+public static void sumOddAppend(Node dh) {
+        int sum = 0;
+        Node newLinkedList = dh;
+        Node temp = dh.next;
+        while(temp!=dh){
+            if((int)temp.elem%2 != 0){
+                sum += (int)temp.elem;
+                newLinkedList.next = temp.next;
+                temp = temp.next;
+            } else{
+                newLinkedList = temp;
+                temp = temp.next;
+            }
+        }
+        Node sumNode = new Node(sum);
+            newLinkedList.next = sumNode;
+            sumNode.next = dh;
+    }
+
+//Task_06
+public static void pairJoin(DNode dh1, DNode dh2) {
+        DNode temp1 = dh1.next;
+        DNode temp2 = dh2.next;
+</font>
+        while(temp1 != null &amp;&amp; temp2 != null){
+            DNode n1 = temp1.next;
+            DNode n2 = temp2.next;
+
+            temp1.next = temp2;
+            temp2.prev = temp1;
+            temp2.next = n1;
+            if(n1 != null){
+                n1.prev = temp2;
+            }
+            temp1 = n1;
+            temp2 = n2;
+        }
+    }
+
+//Task_07
+public static void rangeMove(DNode dh, int start, int end) {
+        // TO DO
+        int size = 0;
+        DNode counter = dh.next;
+        while(counter != dh){
+            size++;
+            counter = counter.next;
+        }
+        DNode temp = dh.next;
+        for (int i = 0; i &lt; size; i++) {
+            DNode nextN = temp.next;
+            int value = (int) temp.elem;
+
+            if(value &gt;= start &amp;&amp; value &lt;= end){
+                temp.prev.next = temp.next;
+                temp.next.prev = temp.prev;
+            
+            DNode tail = dh.prev;
+            tail.next = temp;
+            temp.prev = tail;
+            temp.next = dh;
+            dh.prev = temp;
+        }
+        temp = nextN;   
+    }  
+}</pre>
+</body>
+</html>

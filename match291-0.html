@@ -1,0 +1,210 @@
+<html>
+<head>
+<title>A2_Sec08_1000054258---WASIF-ZAMAN.txt</title>
+</head>
+<body bgcolor="white">
+<hr/>
+A2_Sec08_1000054258---WASIF-ZAMAN.txt<p></p><pre>
+//Task-01 
+
+<a name="2"></a><font color="#0000FF"><a href="match291-1.html#2" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_2_6.gif"/></a>
+
+public static String checkSimilar( Node building1, Node building2 ){
+        
+        Node first = building1;
+        Node second = building2;
+        int firstCount = 0;
+        int secondCount = 0;
+        while(first!=null){
+            firstCount++;
+            first = first.next;
+        }
+        while(second!=null){
+            secondCount++;
+            second = second.next;
+</font>        }
+        if(firstCount!=secondCount){
+            return "Not Similar";
+        }
+        first = building1;
+        second = building2;
+        while(first!=null &amp;&amp; second!=null){
+            if(!first.elem.equals(second.elem)){
+                return "Not Similar";
+            }
+            first = first.next;
+            second = second.next;
+        }
+<a name="7"></a><font color="#0000FF"><a href="match291-1.html#7" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_2_3.gif"/></a>
+
+        return "Similar";
+
+    }
+
+//Task02
+
+public static Node organizeBooks(Node head, Integer[] popularity) { 
+        
+        int leng = popularity.length;
+        for(int i = 0;i&lt;leng-1;i++){
+</font><a name="0"></a><font color="#FF0000"><a href="match291-1.html#0" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_11.gif"/></a>
+
+            Node currentBook = head;
+            Node nextBook = currentBook.next;
+            for(int j = 0;j&lt;leng-1-i;j++){
+                if(popularity[j]&lt;popularity[j+1]){
+                    int tempValue = popularity[j];
+                    popularity[j] = popularity[j+1];
+                    popularity[j+1]=tempValue;
+                    Object substituteBook = currentBook.elem;
+                    currentBook.elem = nextBook.elem;
+                    currentBook.next.elem = substituteBook;
+</font><a name="5"></a><font color="#FF0000"><a href="match291-1.html#5" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_4.gif"/></a>
+
+                }
+                currentBook = currentBook.next;
+                nextBook = nextBook.next;
+            }
+        }
+        
+        return head; 
+    }
+
+//Task-03
+
+public static Node alternateMerge( Node head1, Node head2 ){
+        
+        Node now1 =  head1;
+</font>        Node now2 = head2;
+        while(now1!=null &amp;&amp; now2!=null){
+<a name="1"></a><font color="#00FF00"><a href="match291-1.html#1" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_1_8.gif"/></a>
+
+            Node firstN = now1.next;
+            Node secondN = now2.next;
+            now1.next = now2;
+            now2.next = firstN;
+            now1 = firstN;
+            now2 = secondN;
+        }
+        return head1;
+    }
+
+//Task04
+
+public static Node idGenerator(Node head1, Node head2, Node head3) {
+        
+        Node previous = null;
+        Node presentPoint = head1;
+        while(presentPoint!=null){
+            Node frontNext = presentPoint.next;
+</font>            presentPoint.next = previous;
+            previous = presentPoint;
+            presentPoint = frontNext;
+        }
+        head1 = previous;
+        Node presentPoint2 = head2;
+        Node presentPoint3 = head3;
+        Node last = head1;
+        while(last.next!=null){
+            last = last.next;
+        }
+        while(presentPoint2!=null &amp;&amp; presentPoint3!=null){
+            int add = (int)presentPoint2.elem + (int)presentPoint3.elem;
+            if(add&gt;=10){
+                add = add%10;
+            }
+            Node newNode = new Node(add);
+            last.next = newNode;
+            last = last.next;
+<a name="3"></a><font color="#00FFFF"><a href="match291-1.html#3" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_3_6.gif"/></a>
+
+            presentPoint2 = presentPoint2.next;
+            presentPoint3 = presentPoint3.next;
+
+        }
+
+        return head1;
+    }
+
+//Task05
+
+public static void sumOddAppend(Node dh) {
+        
+        Node current = dh.next;
+        Node earlierVal = dh;
+        int summation = 0;
+        while(current!=dh){
+            if((int)current.elem%2==0){
+</font>                earlierVal = current;
+            }
+            else{
+                summation = summation + (int)current.elem;
+                earlierVal.next = current.next;
+            }
+            current = current.next;
+        }
+<a name="6"></a><font color="#00FF00"><a href="match291-1.html#6" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_1_4.gif"/></a>
+
+        Node newNd = new Node(summation);
+        earlierVal.next = newNd;
+        newNd.next = dh;
+        
+    }
+
+//Task06
+
+public static void pairJoin(DNode dh1, DNode dh2) {
+        
+        DNode present1 = dh1.next;
+        DNode present2 = dh2.next;
+</font>        
+        while(present1!=null &amp;&amp; present2 !=null){
+            DNode next_a = present1.next;
+            DNode next_b = present2.next;
+            present1.next = present2;
+            present2.prev = present1;
+            
+            present2.next = next_a;
+            if(next_a==null){
+                break;
+            }
+            next_a.prev = present2;
+            present1 = next_a;
+            present2 = next_b;
+            
+        }
+        present2.next = dh1;
+        dh1.prev = present2;
+
+    }
+
+//Task07
+
+public static void rangeMove(DNode dh, int start, int end) {
+        int length = 0;
+        DNode count = dh.next;
+        while(count!=dh){
+            length++;
+            count = count.next;
+        }
+        DNode thisMoment = dh.next;
+        for(int i = 1;i&lt;=length;i++){
+            DNode nextMoment = thisMoment.next;
+<a name="4"></a><font color="#FF00FF"><a href="match291-1.html#4" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_4_4.gif"/></a>
+
+            if((int)thisMoment.elem&gt;=start &amp;&amp; (int)thisMoment.elem&lt;=end){
+                thisMoment.prev.next = thisMoment.next;
+                thisMoment.next.prev = thisMoment.prev;
+                DNode endingNode = dh.prev;
+</font>                endingNode.next = thisMoment;
+                thisMoment.prev = endingNode;
+                thisMoment.next = dh;
+                dh.prev = thisMoment;
+            }
+            thisMoment = nextMoment;
+
+        }
+    }
+</pre>
+</body>
+</html>

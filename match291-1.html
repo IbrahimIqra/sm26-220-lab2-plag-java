@@ -1,0 +1,228 @@
+<html>
+<head>
+<title>A2_Sec08_1000054258---WASIF-ZAMAN.txt</title>
+</head>
+<body bgcolor="white">
+<hr/>
+A2_Sec08_1000055005---MOHAMMAD-ABRAR-HASAN.txt<p></p><pre>
+// Lab2Part1
+//Task 1
+<a name="2"></a><font color="#0000FF"><a href="match291-0.html#2" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_2_6.gif"/></a>
+
+ public static String checkSimilar( Node building1, Node building2 ){
+        Node n00=building1;
+        Node c00= building2;
+        int count1=0;
+        int count2=0;
+        while(n00!=null){
+            count1++;
+            n00=n00.next;
+        }
+        while(c00!=null){
+            count2++;
+            c00=c00.next;
+</font>        }
+        Node d00=building1;
+        Node e00=building2;
+        while(d00!=null){
+        if(count1!=count2){
+            return "Not Similar";
+              }
+        else{
+          if(d00.elem==e00.elem){
+            d00=d00.next;
+            e00=e00.next;
+               }
+
+          else{
+            return "Not Similar";
+     }
+    }
+    }
+<a name="7"></a><font color="#0000FF"><a href="match291-0.html#7" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_2_3.gif"/></a>
+
+       return "Similar";
+    }
+
+//Task 2
+
+    public static Node organizeBooks(Node head, Integer[] popularity) {
+       int size = popularity.length; 
+        for(int limit=0; limit&lt;size; limit++){
+</font><a name="0"></a><font color="#FF0000"><a href="match291-0.html#0" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_10.gif"/></a>
+
+            Node pointer = head; 
+            Node mnext=pointer.next;
+            for(int limit2=0; limit2&lt;size-1-limit; limit2++){
+                if(popularity[limit2]&lt;popularity[limit2+1]){
+                   int temp = popularity [limit2];
+                   popularity[limit2]=popularity[limit2+1];   //while we are sorting the normal bubble sort, we also sort the linked list
+                   popularity[limit2+1] = temp;
+                   Object tempo= pointer.elem;       // objecr bc string (error dey)
+                   pointer.elem = mnext.elem;        // same 
+                   mnext.elem=tempo;
+</font><a name="5"></a><font color="#FF0000"><a href="match291-0.html#5" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_3.gif"/></a>
+
+                  }
+                mnext=mnext.next;                  //next 
+                pointer=pointer.next; }
+}
+            return head; 
+}
+
+//Task 3
+
+ public static Node alternateMerge( Node head1, Node head2 ){
+        
+        Node saved=head1;
+</font>        while (head1!=null &amp;&amp; head2!=null) {
+<a name="1"></a><font color="#00FF00"><a href="match291-0.html#1" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_1_7.gif"/></a>
+
+           Node b=head1.next;
+           Node c=head2.next;
+           head1.next=head2;
+           head2.next=b;
+           head1= b;
+           head2 =c;
+        }
+        return saved;
+    }
+
+//Task 4
+
+  public static Node idGenerator(Node head1, Node head2, Node head3) {    
+        Node n00=head1;
+        Node orghead=head1;
+         while(n00!=null){
+            Node after=n00.next;
+</font>            if(n00==orghead){
+                n00.next=null;
+            }
+            else{
+                n00.next=head1;
+                head1=n00;
+            }
+            n00=after;
+           }
+         
+         while(orghead.next!=null){
+            orghead = orghead.next; 
+             } 
+
+         Node n01=head2;
+         Node n02 =head3;
+         Node summed=null;
+         int s=0;
+         while (n01!=null&amp;&amp;n02!=null) {
+            s =(int)n01.elem+(int)n02.elem;
+            if(s&lt;10){
+             summed=new Node(s); 
+             orghead.next=summed;
+             orghead=summed;
+            }
+            else if(s&gt;=10){
+             summed=new Node(s%10); 
+             orghead.next=summed;
+             orghead=summed;
+            }
+<a name="3"></a><font color="#00FFFF"><a href="match291-0.html#3" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_3_5.gif"/></a>
+
+            n01=n01.next;
+            n02=n02.next;
+   }
+        return head1; // Remove this when you're ready to return the new head
+     }
+
+// Lab2Part2 
+
+//Task 5
+
+public static void sumOddAppend(Node dh) {
+        Node itrt=dh.next;
+        Node bfr=dh;
+        int summed=0;
+        while(itrt!=dh){
+            if((int)itrt.elem%2==1){
+</font>                summed+=(int)itrt.elem;
+                bfr.next=itrt.next;
+                itrt=itrt.next;
+            }
+            else{
+             bfr=itrt;
+             itrt=itrt.next;
+            }
+        }
+            Node oddball = new Node (summed);
+            Node itrt2 =dh.next;
+            while (itrt2.next!=dh) {
+<a name="6"></a><font color="#00FF00"><a href="match291-0.html#6" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_1_3.gif"/></a>
+
+                itrt2=itrt2.next;
+            }
+            itrt2.next=oddball;
+            oddball.next=dh;
+
+} 
+
+
+
+//Task 6
+
+public static void pairJoin(DNode dh1, DNode dh2) {
+        DNode uppr=dh1.next;
+        DNode lwr=dh2.next;
+</font>        DNode trck1=uppr.next;
+        DNode trck2=lwr.next;
+        while (lwr.next!=dh1) {
+            if(trck1==null &amp;&amp; trck2==null){
+                uppr.next=lwr;
+                lwr.prev=uppr;
+                lwr.next=dh1;
+                dh1.prev=lwr;
+            }
+            else{
+                uppr.next=lwr;
+                lwr.prev=uppr; 
+                lwr.next=trck1;
+                trck1.prev=lwr;
+                uppr=trck1;
+                lwr=trck2;
+                trck1=trck1.next;
+                trck2=trck2.next;
+        }   
+        }
+        }
+
+
+
+//Task 7
+
+    public static void rangeMove(DNode dh, int start, int end) {
+        DNode now=dh.next;
+        DNode nowpor=now.next;
+        DNode ender=dh.prev;
+        while(now!=ender){
+<a name="4"></a><font color="#FF00FF"><a href="match291-0.html#4" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_4_4.gif"/></a>
+
+            if((int)now.elem&gt;=start &amp;&amp; (int)now.elem&lt;=end){
+                now.prev.next=now.next;
+                now.next.prev= now.prev;
+                DNode ruu=dh.next;
+</font>                 while(ruu.next!=dh){
+                    ruu = ruu.next;
+                 }
+                  ruu.next=now;
+                 now.prev=ruu;
+                 now.next=dh; 
+                 dh.prev=now;
+                 now=nowpor; 
+                 nowpor=nowpor.next;
+            }
+            else{
+                now= now.next;
+                nowpor=nowpor.next;
+            }
+    }
+    }</pre>
+</body>
+</html>

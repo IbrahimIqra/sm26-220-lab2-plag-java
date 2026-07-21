@@ -1,0 +1,339 @@
+<html>
+<head>
+<title>A2_Sec18_24301386---MASHIYAAT-AFNAN-EHAN.txt</title>
+</head>
+<body bgcolor="white">
+<hr/>
+A2_Sec16_1000055151---TASNIM-BIN-MAHABUB.txt<p></p><pre>
+//assignment2-p1
+
+//AssignmentTask1: Building Blocks
+
+public static String checkSimilar( Node building1, Node building2 ) {
+  
+  Node pointer1=building1;
+  Node pointer2=building2;
+  
+<a name="6"></a><font color="#00FF00"><a href="match275-0.html#6" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_1_4.gif"/></a>
+
+  while(pointer1!=null &amp;&amp; pointer2!=null){ //duita ekshathe traverse
+    
+    
+    if(!pointer1.elem.equals(pointer2.elem)){  //compare kora
+      return "Not Similar";
+    }
+    
+    
+    pointer1=pointer1.next;
+    pointer2=pointer2.next;
+    
+    
+  }
+  
+  
+  
+  if (pointer1!=null || pointer2!=null){ //different length er ll thakle
+</font>    return "Not Similar";
+  }
+  
+  
+  return "Similar";
+}
+
+
+//AssignmentTask2: Organize Books
+
+public static Node organizeBooks(Node head, Integer[] popularity) {
+  
+<a name="0"></a><font color="#FF0000"><a href="match275-0.html#0" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_10.gif"/></a>
+
+  if(head==null || head.next==null){
+    return head;
+  }
+  
+  int totBooks=popularity.length;
+  
+  for(int i=0;i&lt;totBooks-1;i++){ //bubble sorting
+    
+    Node temp=head;
+    
+    for(int j=0;j&lt;totBooks-1-i;j++){
+      
+      if(popularity[j]&lt;popularity[j+1]){
+        
+        
+        
+        int popTemp=popularity[j]; //popularity swap
+        popularity[j]=popularity[j+1];
+        popularity[j+1]=popTemp;
+</font>        
+        
+<a name="4"></a><font color="#FF00FF"><a href="match275-0.html#4" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_4_4.gif"/></a>
+
+        String nameTemp=(String)temp.elem; //boi er naam swap
+        temp.elem=temp.next.elem;
+        temp.next.elem=nameTemp;
+        
+        
+      }
+      
+      
+      temp = temp.next;
+    }
+  }
+  
+  return head;
+}
+
+
+
+//AssignmentTask3: Alternate Merge
+
+public static Node alternateMerge( Node head1, Node head2 ){ 
+</font>  
+  Node temp1=head1;
+  Node temp2=head2;
+  
+<a name="2"></a><font color="#0000FF"><a href="match275-0.html#2" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_2_7.gif"/></a>
+
+  while(temp1!=null &amp;&amp; temp2!=null){  //duita ekshathe traverse
+    
+    Node next1=temp1.next;  //node save na korle harai jabe
+    Node next2=temp2.next;
+    
+    temp1.next=temp2;  //1 er por 2
+    
+    if(next1==null){ //stop korar jonno
+      break;
+    }
+    
+    temp2.next=next1; //2 er por abr 1
+    
+    temp1=next1;
+    temp2=next2;
+  }
+  
+  return head1;
+}
+
+//AssignmentTask4: ID Generator
+
+
+public static Node idGenerator(Node head1, Node head2, Node head3) {
+</font>  
+  Node result=reverse(head1);
+  result=addingLL(result, head2, head3); //ulta 1 er shathe notun ta link korbe
+  
+  return result;
+}
+
+public static Node reverse(Node head){ //1 nmbr reverse
+  Node newHead=null;
+  Node temp=head;
+  
+  while(temp!=null){
+    
+    Node newNode=new Node(temp.elem);
+    newNode.next=newHead;
+    newHead=newNode;
+    
+    temp=temp.next;
+  }
+  
+  return newHead;
+}
+
+public static Node addingLL(Node head,Node head2,Node head3){ //2 ar 3 ekshathe traverse kore add
+  Node tail=head;
+  
+  while(tail.next!=null){
+    tail=tail.next;
+  }
+  
+  
+  Node temp2=head2;
+  Node temp3=head3;
+  
+  while(temp2!=null &amp;&amp; temp3!=null){
+    
+    int sum=((int)temp2.elem+(int)temp3.elem)%10; 
+    
+    tail.next=new Node(sum);
+    tail=tail.next;
+    
+    temp2=temp2.next;
+    temp3=temp3.next;
+  }
+  
+  return head;
+}
+
+
+
+//assignment2-p2
+
+
+//AssignmentTask5
+
+public static void sumOddAppend(Node dh){
+  
+  
+  Node pre=dh;
+  Node cur=dh.next;
+  
+  
+  int sum=0;
+  
+  while(cur!=dh){
+    
+<a name="3"></a><font color="#00FFFF"><a href="match275-0.html#3" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_3_5.gif"/></a>
+
+    int val=(int)cur.elem;
+    
+    if(val%2!=0){
+      sum+=val;
+      pre.next=cur.next; //node remove
+      cur=pre.next;
+    }
+    
+    
+    else{
+      pre=cur; //skip 
+      cur=cur.next;
+    }
+    
+  }
+  
+  Node newNode=new Node(sum);
+</font>  
+  Node temp=dh;
+
+  while(temp.next!=dh){
+<a name="7"></a><font color="#0000FF"><a href="match275-0.html#7" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_2_3.gif"/></a>
+
+    temp=temp.next;
+  }
+  
+  temp.next=newNode; //last node e add
+  newNode.next=dh; //circular korar jonno
+}
+
+
+//AssignmentTask6
+
+public static void pairJoin(DNode dh1, DNode dh2) {
+  
+  DNode temp1=dh1.next; //node save
+</font>  DNode temp2=dh2.next;
+  
+  
+  
+  while(temp1!=null &amp;&amp; temp2!=null){
+    
+    DNode next1=temp1.next;  //1 er por 2
+    DNode next2=temp2.next;
+    
+    
+    
+    temp1.next=temp2;
+    temp2.prev=temp1;
+    
+    
+    
+    if(next1==null){ //stopping
+      break;
+    }
+    
+    
+    
+    temp2.next=next1; //2 er por 1
+    next1.prev=temp2;
+
+    temp1=next1;
+    temp2=next2;
+    
+    
+  }
+  
+  DNode tail=dh1; //circular korar jonno
+  
+  
+  while(tail.next!=null){
+<a name="5"></a><font color="#FF0000"><a href="match275-0.html#5" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_4.gif"/></a>
+
+    tail=tail.next;
+  }
+  
+  
+  tail.next=dh1;
+  dh1.prev=tail;
+  
+}
+
+
+
+//AssignmentTask7
+
+public static void rangeMove(DNode dh, int start, int end) {
+  
+  
+  if(dh.next==dh){ //empty hole return
+    return;
+</font>  }
+  
+  
+  DNode tail=dh.prev; //last node ber kora
+  
+  int count=0;
+  
+  DNode temp=dh.next;
+  
+  while(temp!=dh){ //node count
+    count++;
+    temp=temp.next;
+  }
+  
+  temp=dh.next;
+  
+  while(count&gt;0){
+    
+<a name="1"></a><font color="#00FF00"><a href="match275-0.html#1" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_1_8.gif"/></a>
+
+    DNode nextNode=temp.next; //next node save korar jonno
+    
+    int val=(int)temp.elem;
+    
+    if(val&gt;=start &amp;&amp; val&lt;=end){
+      
+      if(temp!=tail){    //already last node na hole
+        
+        
+        temp.prev.next = temp.next;  //current node remove korar jonno
+        temp.next.prev = temp.prev;
+        
+        
+        
+        temp.next=dh;   //last e add korar jonno
+        temp.prev=tail;
+        tail.next=temp;
+        dh.prev=temp;
+</font>        
+        
+        
+        tail=temp; //notun tail update korar jonno
+      }
+    }
+    
+    
+    temp=nextNode;
+    count--; //loop control
+    
+    
+  }
+}
+
+
+
+</pre>
+</body>
+</html>

@@ -1,0 +1,241 @@
+<html>
+<head>
+<title>A2_Sec17_1000055016---NAFIS-MUTTAKIN.txt</title>
+</head>
+<body bgcolor="white">
+<hr/>
+A2_Sec08_24301489---MONDIRA-GHOSH-GOLPO.txt<p></p><pre>
+//24301489
+//Task 1
+public class AssignmentTask1 {
+
+    //Two heads are being passed onto this method
+    //and a String is expected as return
+    // After you're done coding  MUST SUBMIT this method
+<a name="8"></a><font color="#00FFFF"><a href="match323-0.html#8" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_3_3.gif"/></a>
+
+    public static String checkSimilar( Node building1, Node building2 ){
+        
+        //TODO
+        Node n2211=building1;
+        Node n2221=building2;
+        while(n2211!=null &amp;&amp; n2221!=null){
+</font>            if(!n2211.elem.equals(n2221.elem)){
+            return "Not Similar";
+            }
+            n2211=n2211.next;
+            n2221=n2221.next;
+        }
+        if(n2211==null &amp;&amp; n2221==null){
+                return "Similar";
+       }
+       else{
+                return "Not Similar";
+            }
+        
+     }
+
+//Task 2
+import java.util.Arrays;
+<a name="3"></a><font color="#00FFFF"><a href="match323-0.html#3" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_3_5.gif"/></a>
+
+public class AssignmentTask2{
+    
+    public static Node organizeBooks(Node head, Integer[] popularity) {
+         //TO DO
+         int n2441=popularity.length;
+         for(int i=0; i&lt;n2441-1;i++){
+            Node nCurr2441=head;
+            for(int j=0;j&lt;n2441-i-1;j++){
+</font>               if(popularity[j]&lt;popularity[j+1]){
+                Integer temp2441=popularity[j];
+                popularity[j]=popularity[j+1];
+                popularity[j+1]=temp2441;
+            
+                Object tempBook2441=nCurr2441.elem;
+                nCurr2441.elem=nCurr2441.next.elem;
+                nCurr2441.next.elem=tempBook2441;
+               }
+               nCurr2441=nCurr2441.next;
+
+            }
+         }
+     return head;
+  }
+    
+
+//Task 3
+public class AssignmentTask3 {
+<a name="1"></a><font color="#00FF00"><a href="match323-0.html#1" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_1_7.gif"/></a>
+
+    public static Node alternateMerge( Node head1, Node head2 ){
+        Node n2111=head1;
+        Node n2211=head2;
+        while(n2111!=null &amp;&amp; n2211!=null){
+            Node next2111=n2111.next;
+            Node next2211=n2211.next;
+            n2111.next= n2211;
+            n2211.next=next2111;
+            
+            n2111=next2111;
+            n2211=next2211;
+        }
+         return head1;
+</font>    }
+
+//Task 4
+public class AssignmentTask4{
+
+    public static Node reversee(Node HeaddG){
+        Node nG=HeaddG;
+        while(nG!=null){
+            Node afterG=nG.next;
+            if(nG==HeaddG){
+                nG.next=null;
+            }
+            else{
+                nG.next=HeaddG;
+                HeaddG=nG;
+            }
+            nG=afterG;
+        }
+        return HeaddG;
+    }
+     // MUST SUBMIT this method
+    public static Node idGenerator(Node head1, Node head2, Node head3) {
+        //TO DO
+<a name="2"></a><font color="#0000FF"><a href="match323-0.html#2" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_2_5.gif"/></a>
+
+      head1=reversee(head1);
+      
+    Node tailG1=head1;
+    while(tailG1.next!=null){
+        tailG1=tailG1.next;
+    }
+    Node n2211=head2;
+    Node n3311=head3;
+    while(n2211!=null &amp;&amp; n3311!=null){
+        int summati2211=(Integer)n2211.elem + (Integer)n3311.elem;
+</font>        if(summati2211&gt;=10){
+<a name="5"></a><font color="#FF0000"><a href="match323-0.html#5" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_4.gif"/></a>
+
+            summati2211=summati2211%10;
+        }
+        tailG1.next=new Node(summati2211,null);
+        tailG1=tailG1.next;
+        n2211=n2211.next;
+        n3311=n3311.next;
+    }
+     return head1;
+</font>}
+
+//Task 5 
+public class AssignmentTask5 {
+
+    //SUBMIT ONLY THIS METHOD
+    public static void sumOddAppend(Node dh) {
+        // TO DO
+        Node prev1h=dh;
+        Node n1h=dh.next;
+        int sumh=0;
+        while(n1h!=dh){
+          int vh=(int)n1h.elem;
+          if(vh%2!=0){
+            sumh+=vh;
+            prev1h.next=n1h.next;
+          }
+          else{
+            prev1h=n1h;
+          }
+           n1h=n1h.next; 
+        }
+        Node newN1=new Node(sumh);
+        prev1h.next=newN1;
+        newN1.next=dh;
+    }
+
+//Task 6
+public class AssignmentTask6 {
+
+    //SUBMIT ONLY THIS METHOD
+    public static void pairJoin(DNode dh1, DNode dh2) {
+        // TO DO
+        if(dh1==null || dh2==null) return;
+<a name="6"></a><font color="#00FF00"><a href="match323-0.html#6" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_1_3.gif"/></a>
+
+        DNode h21=dh1.next;
+        DNode h22=dh2.next;
+
+     while(h21!=null &amp;&amp; h22!=null){
+        DNode temp21=h21.next;
+        DNode temp22=h22.next;
+</font>
+        h21.next=h22;
+        h22.prev=h21;
+        if(temp21!=null){
+            h22.next=temp21;
+<a name="4"></a><font color="#FF00FF"><a href="match323-0.html#4" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_4_4.gif"/></a>
+
+            temp21.prev=h22;
+        }
+          h21=temp21;
+          h22=temp22;
+    }
+     DNode tai11=dh1;
+     while(tai11.next!=null){
+        tai11=tai11.next;
+     }
+        tai11.next=dh1;
+        dh1.prev=tai11;
+</font>     }
+    
+//Task 7
+public class AssignmentTask7 {
+
+    //SUBMIT ONLY THIS METHOD
+    public static void rangeMove(DNode dh, int start, int end) {
+        // TO DO
+        if(dh==null || dh.next==dh){
+            return;
+        }
+        DNode moveH1=null;
+        DNode moveTail1=null;
+            DNode temp21=dh.next;
+            while(temp21!=dh){
+                DNode next11=temp21.next;
+<a name="7"></a><font color="#0000FF"><a href="match323-0.html#7" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_2_3.gif"/></a>
+
+                int value41=(int)temp21.elem;
+            if(value41&gt;=start &amp;&amp; value41&lt;=end){
+                
+                temp21.prev.next=temp21.next;
+                temp21.next.prev=temp21.prev;
+</font>
+                temp21.prev=null;
+<a name="0"></a><font color="#FF0000"><a href="match323-0.html#0" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_7.gif"/></a>
+
+                temp21.next=null;
+                if(moveH1==null){
+                    moveH1=temp21;
+                    moveTail1=temp21;
+                }
+                else{
+                    moveTail1.next=temp21;
+                    temp21.prev=moveTail1;
+                    moveTail1=temp21;
+                }
+                }
+                temp21=next11;
+            }
+            if(moveH1!=null){
+                DNode oldTail1=dh.prev;
+                oldTail1.next=moveH1;
+                moveH1.prev=oldTail1;
+                moveTail1.next=dh;
+</font>                dh.prev=moveTail1;
+         
+         }
+     }
+    </pre>
+</body>
+</html>

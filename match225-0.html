@@ -1,0 +1,192 @@
+<html>
+<head>
+<title>A2_Sec03_1000055653---SHEIKH-SADMAN-SADAF.txt</title>
+</head>
+<body bgcolor="white">
+<hr/>
+A2_Sec03_1000055653---SHEIKH-SADMAN-SADAF.txt<p></p><pre>
+//Task 01
+
+public static String checkSimilar( Node building1, Node building2 ){
+    
+    Node temp1 = building1;
+    Node temp2 = building2;
+    
+    boolean flag = false;
+    
+    while(temp1!=null || temp2!=null){
+      if(temp1 == null || temp2 == null || temp1.elem!=temp2.elem){
+        return "Not Similar";
+      }
+      else{
+        temp1 = temp1.next;
+        temp2 = temp2.next;
+      }
+    }
+    return "Similar";
+  }
+
+//Task 02
+
+public static Node organizeBooks(Node head, Integer[] popularity) {
+    int n = popularity.length;
+    for(int i = 0; i&lt;n-1; i++){
+      Node cur = head;
+      
+      for(int j = 0; j&lt;n-i-1; j++){
+        if(popularity[j]&lt;popularity[j+1]){
+          
+          Integer temp = popularity[j];
+<a name="3"></a><font color="#00FFFF"><a href="match225-1.html#3" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_3_6.gif"/></a>
+
+          popularity[j] = popularity[j+1];
+          popularity[j+1] = temp;
+          
+          String swap = (String )cur.elem;
+          cur.elem = cur.next.elem;
+          cur.next.elem = swap;
+        }
+        cur = cur.next;
+</font><a name="1"></a><font color="#00FF00"><a href="match225-1.html#1" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_1_13.gif"/></a>
+
+      }
+    }
+    return head;
+  }
+
+//Task 03
+
+public static Node alternateMerge( Node head1, Node head2 ){
+      Node cur1 = head1;
+      Node cur2 = head2;
+      
+      while(cur1!=null &amp;&amp; cur2!=null){
+        Node temp1 = cur1.next;
+        Node temp2 = cur2.next;
+        
+        cur1.next = cur2;
+        if(temp1 == null){
+          break;
+        }
+        
+        cur2.next = temp1;
+        cur1 = temp1;
+        cur2 = temp2;
+      }
+      return head1;       
+    }
+
+//Task 04
+
+public static Node idGenerator(Node head1, Node head2, Node head3) {
+        Node id = null;
+        Node cur1 = head1;
+</font>        while (cur1 != null) {
+            Node temp = new Node(cur1.elem);
+            temp.next = id;
+            id = temp;
+            cur1 = cur1.next;
+        }
+
+        Node Temp = id;
+        while (Temp.next != null) {
+<a name="5"></a><font color="#FF0000"><a href="match225-1.html#5" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_3.gif"/></a>
+
+            Temp = Temp.next;
+        }
+
+        Node cur2 = head2;
+        Node cur3 = head3;
+        while (cur2 != null &amp;&amp; cur3 != null) {
+            int sum = (int)cur2.elem + (int)cur3.elem;
+</font>            if (sum &gt;= 10) {
+                sum %= 10;
+            }
+            Node s = new Node(sum);
+<a name="4"></a><font color="#FF00FF"><a href="match225-1.html#4" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_4_3.gif"/></a>
+
+            Temp.next = s;
+            Temp = s;
+            cur2 = cur2.next;
+            cur3 = cur3.next;
+        }
+        return id;
+    }
+
+//Task 05
+
+public static void sumOddAppend(Node dh) {
+</font>      Node temp = dh;
+      int sum = 0;
+      
+      while(temp.next!=dh){
+        
+        if((int)temp.next.elem%2!=0){
+          sum+=(int)temp.next.elem;
+          temp.next = temp.next.next;
+        }
+<a name="2"></a><font color="#0000FF"><a href="match225-1.html#2" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_2_6.gif"/></a>
+
+        temp = temp.next;
+      }
+      Node s = new Node(sum);
+      temp.next = s;
+      s.next = dh;
+    }
+
+//Task 06
+
+public static void pairJoin(DNode dh1, DNode dh2) {
+      DNode cur1 = dh1.next;
+      DNode cur2 = dh2.next;
+      
+      while(cur1!=null){
+</font>        DNode temp1 = cur1.next;
+<a name="0"></a><font color="#FF0000"><a href="match225-1.html#0" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_21.gif"/></a>
+
+        DNode temp2 = cur2.next;
+        
+        cur1.next = cur2;
+        cur2.prev = cur1;
+        
+        cur2.next = temp1;
+        if(temp1 != null){
+          temp1.prev = cur2;
+        }
+        cur1 = temp1;
+        cur2 = temp2;
+      }
+    }
+
+//Task 07
+
+public static void rangeMove(DNode dh, int start, int end) {
+      int len = 0;
+      DNode temp = dh.next;
+      while(temp!=dh){
+        len++;
+        temp = temp.next;
+      }
+      
+      DNode cur = dh.next;
+      for(int i = 0; i&lt;len; i++){
+        DNode Temp = cur.next;
+        
+        int val = (int)cur.elem;
+        if(val&gt;=start &amp;&amp; val&lt;=end){
+          cur.prev.next = cur.next;
+          cur.next.prev = cur.prev;
+          
+          DNode tail = dh.prev;
+          
+          tail.next = cur;
+          cur.prev = tail;
+</font>          
+          cur.next = dh;
+          dh.prev = cur;
+        }
+        cur = Temp;
+      }
+    }</pre>
+</body>
+</html>

@@ -1,0 +1,306 @@
+<html>
+<head>
+<title>A2_Sec01_1000054935---SOAAD-RAHMAN.txt</title>
+</head>
+<body bgcolor="white">
+<hr/>
+A2_Sec01_1000054935---SOAAD-RAHMAN.txt<p></p><pre>
+﻿//TASK 01
+
+
+public static String checkSimilar( Node building1, Node building2 ){
+
+
+        String result="Similar"; 
+        Node temp1=building1;
+        Node temp2=building2;
+
+
+        while(temp1!=null &amp;&amp; temp2!=null){
+            if(!temp1.elem.equals(temp2.elem)){
+                result= "Not Similar";
+            }
+            temp1=temp1.next;
+            temp2=temp2.next;
+        }
+
+
+        if (temp1!=null ||temp2!=null) {
+            result= "Not Similar";
+        }
+        return result;
+    }
+
+
+
+
+
+
+
+
+
+
+//TASK 02
+
+
+public static Node organizeBooks(Node head, Integer[] popularity) {  
+        
+<a name="4"></a><font color="#FF00FF"><a href="match321-1.html#4" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_4_4.gif"/></a>
+
+        Integer arrayLength=popularity.length;
+
+
+        for(int i=0;i&lt;arrayLength-1;i++){
+            Node current=head;
+
+
+            for(int j=0;j&lt;arrayLength-1-i;j++){
+</font>                int temporary=0;
+                if(popularity[j]&lt;popularity[j+1]){
+                 temporary=popularity[j];
+<a name="1"></a><font color="#00FF00"><a href="match321-1.html#1" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_1_8.gif"/></a>
+
+                 popularity[j]=popularity[j+1];
+                 popularity[j+1]=temporary;
+
+
+                 Object book=current.elem;
+                 current.elem=current.next.elem;
+                 current.next.elem=book;
+                }
+                current=current.next;
+            }
+        }
+
+
+        return head; // Remove this when you're ready to return the new head
+    }
+
+
+
+
+
+
+//TASK 03
+
+
+   public static Node alternateMerge( Node head1, Node head2 ){
+        
+        Node first= head1;
+</font>        Node second= head2;
+
+
+        while(first!=null &amp;&amp; second!=null){
+            Node nextOfFirst= first.next;
+            Node nextOfSecond=second.next;
+
+
+            first.next=second;
+<a name="6"></a><font color="#00FF00"><a href="match321-1.html#6" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_1_3.gif"/></a>
+
+            second.next=nextOfFirst;
+
+
+            first=nextOfFirst;
+            second=nextOfSecond;
+        }
+        return head1;
+    }
+
+
+
+
+
+
+//TASK 04
+
+
+public static Node idGenerator(Node head1, Node head2, Node head3) {
+</font>        
+       Node prev=null;
+       Node current=head1;
+       Node next;
+
+
+       while(current!=null){
+        next=current.next;
+        current.next=prev;
+        prev=current;
+        current=next;
+       }
+
+
+       current=prev;
+       if(current!=null){
+       while(current.next!=null){
+        current=current.next;
+       }
+    }
+
+
+       while(head2!=null &amp;&amp; head3!=null){
+       int sum1=(Integer)head2.elem;
+       int sum2=(Integer)head3.elem;
+<a name="2"></a><font color="#0000FF"><a href="match321-1.html#2" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_2_7.gif"/></a>
+
+       int Sum=(sum1+sum2)%10;
+
+
+       Node newNode=new Node(Sum,null);
+       current.next=newNode;
+       current=newNode;
+
+
+       head2=head2.next;
+       head3=head3.next;
+       }
+        return prev; // Remove this when you're ready to return the new head
+    }
+
+
+
+
+
+
+//TASK 05
+
+
+public static void sumOddAppend(Node dh) {
+        Node prev=dh;
+        Node current=dh.next;
+        int sum=0;
+</font>
+
+        while(current!=dh){
+            if((int)current.elem%2==1){
+                sum+=(int)current.elem;
+<a name="7"></a><font color="#0000FF"><a href="match321-1.html#7" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_2_3.gif"/></a>
+
+                prev.next=current.next;
+                current=prev.next;
+            }
+            else{
+                prev=current;
+                current=current.next;
+            }
+        }
+
+
+        Node endNode=dh;
+</font>        while(endNode.next!=dh){
+            endNode=endNode.next;
+        }
+
+
+<a name="0"></a><font color="#FF0000"><a href="match321-1.html#0" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_11.gif"/></a>
+
+        Node newNode= new Node(sum);
+        newNode.next=dh;
+        endNode.next=newNode;
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+//TASK 06
+
+
+public static void pairJoin(DNode dh1, DNode dh2) {
+
+
+        DNode curr1=dh1.next;
+        DNode curr2=dh2.next;
+
+
+        while(curr1!=null &amp;&amp; curr2!=null){   //Connecting the 2 diff lists
+            DNode next1=curr1.next;
+            DNode next2=curr2.next;
+
+
+            curr1.next=curr2;
+            curr2.prev=curr1;
+
+
+            curr2.next=next1;
+            if(next1!=null){
+            next1.prev=curr2;
+            }
+            curr1=next1;
+            curr2=next2;
+</font>        }
+
+
+        dh2.next=null;
+        dh2.prev=null;
+
+
+        DNode previous=dh1;
+        DNode curr=dh1.next;
+
+
+        while(curr!=null){
+            curr.prev=previous;
+            previous=curr;
+            curr=curr.next;
+        }
+
+
+        previous.next=dh1;
+<a name="5"></a><font color="#FF0000"><a href="match321-1.html#5" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_4.gif"/></a>
+
+        dh1.prev=previous;
+    }
+
+
+
+
+
+
+
+
+
+
+//TASK 07
+
+
+public static void rangeMove(DNode dh, int start, int end) {
+        DNode tail=dh.prev;
+        DNode checkTail=tail;
+
+
+        DNode current=dh.next;
+
+
+        while(current!=checkTail.next){
+</font>            DNode next=current.next;
+
+
+<a name="3"></a><font color="#00FFFF"><a href="match321-1.html#3" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_3_6.gif"/></a>
+
+            int value=(int)current.elem;
+
+
+            if(value&gt;=start &amp;&amp; value&lt;=end){
+                current.prev.next=current.next;
+                current.next.prev=current.prev;
+
+
+                tail.next=current;
+                current.prev=tail;
+                current.next=dh;
+                dh.prev=current;
+</font>                tail=current;
+            }
+            current=next;
+        }
+    }</pre>
+</body>
+</html>

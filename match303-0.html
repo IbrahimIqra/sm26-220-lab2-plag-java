@@ -1,0 +1,270 @@
+<html>
+<head>
+<title>A2_Sec17_24101160---ZAWAD-IBNE-SHAMS.txt</title>
+</head>
+<body bgcolor="white">
+<hr/>
+A2_Sec17_24101160---ZAWAD-IBNE-SHAMS.txt<p></p><pre>
+    
+
+//AssignmentTask1
+
+<a name="7"></a><font color="#0000FF"><a href="match303-1.html#7" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_2_3.gif"/></a>
+
+public static String checkSimilar(Node building1, Node building2) {
+        //You're not suppose to create any new Linked List for this task
+        //TODO
+        Node curr1 = building1;
+        Node curr2 = building2;
+
+        while (curr1 != null &amp;&amp; curr2 != null) {
+</font>            if (curr1.elem != curr2.elem) {
+<a name="4"></a><font color="#FF00FF"><a href="match303-1.html#4" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_4_4.gif"/></a>
+
+                return "Not Similar";
+            }
+            curr1 = curr1.next;
+            curr2 = curr2.next;
+        }
+        if (curr1 == null &amp;&amp; curr2 == null) {
+            return "Similar";
+        } else {
+            return "Not Similar";
+        }
+    }
+
+
+
+
+
+
+
+//AssignmentTask2
+
+    public static Node organizeBooks(Node head, Integer[] popularity) {
+</font>
+      
+        int n = popularity.length;
+        boolean isswapped = true;
+
+        while (isswapped) {
+            isswapped = false;
+            Node curr = head;
+            int i = 0;
+
+            while (curr != null &amp;&amp; curr.next != null &amp;&amp; i &lt; n - 1) {
+
+                if (popularity[i] &lt; popularity[i + 1]) {
+
+                    int tempP = popularity[i];
+                    popularity[i] = popularity[i + 1];
+                    popularity[i + 1] = tempP;
+                    Object tempE = curr.elem;
+                    curr.elem = curr.next.elem;
+<a name="8"></a><font color="#00FFFF"><a href="match303-1.html#8" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_3_2.gif"/></a>
+
+                    curr.next.elem = tempE;
+                    isswapped = true;
+                }
+                curr = curr.next;
+                i++;
+            }
+        }
+
+        return head;
+        
+    }
+
+
+//AssignmentTask3
+
+
+   public static Node alternateMerge(Node head1, Node head2) {
+</font>
+        if (head1 == null) {
+            return head2;
+        }
+        if (head2 == null) {
+            return head1;
+        }
+        Node curr1 = head1;
+        Node curr2 = head2;
+<a name="1"></a><font color="#00FF00"><a href="match303-1.html#1" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_1_5.gif"/></a>
+
+        while (curr1 != null &amp;&amp; curr2 != null) {
+            Node next1 = curr1.next;
+            Node next2 = curr2.next;
+            curr1.next = curr2;
+            if (next1 != null) {
+                curr2.next = next1;
+            }
+            curr1 = next1;
+            curr2 = next2;
+        }
+
+        return head1;
+
+
+
+//AssignmentTask4
+
+
+
+   public static Node ReverseLL(Node head) {
+</font>        Node tail = head;
+        Node prev = null;
+        while (tail != null) {
+            Node nxt = tail.next;
+            tail.next = prev;
+            prev = tail;
+            tail = nxt;
+        }
+        return prev;
+    }
+
+
+    public static Node idGenerator(Node head1, Node head2, Node head3) {
+
+
+        Node revHead = ReverseLL(head1);
+        Node newLL = null;
+        Node nw = null;
+        Node temp = null;
+
+        Node tail = revHead;
+        while (tail != null) {
+            if (newLL == null) {
+                newLL = new Node(tail.elem);
+                nw = newLL;
+            } else {
+                temp = new Node(tail.elem);
+                nw.next = temp;
+                nw = temp;
+            }
+<a name="6"></a><font color="#00FF00"><a href="match303-1.html#6" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_1_3.gif"/></a>
+
+            tail = tail.next;
+        }
+
+        Node c2 = head2;
+        Node c3 = head3;
+        while (c2 != null &amp;&amp; c3 != null) {
+            int sum = (int) c2.elem + (int) c3.elem;
+</font>            int digit = sum &gt;= 10 ? sum % 10 : sum;
+
+            temp = new Node(digit);
+<a name="2"></a><font color="#0000FF"><a href="match303-1.html#2" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_2_5.gif"/></a>
+
+            nw.next = temp;
+            nw = temp;
+
+            c2 = c2.next;
+            c3 = c3.next;
+        }
+        return newLL;
+        
+    }
+
+
+
+//AssignmentTask5
+
+
+    public static void sumOddAppend(Node dh) {
+        // TO DO
+        int sum = 0;
+        Node prev = dh;
+        Node curr = dh.next;
+</font>
+        while (curr != dh) {
+            if ((int) curr.elem % 2 != 0) {
+                sum += (int) curr.elem;
+<a name="3"></a><font color="#00FFFF"><a href="match303-1.html#3" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_3_5.gif"/></a>
+
+                prev.next = curr.next;
+            } else {
+                prev = curr;
+            }
+            curr = curr.next;
+        }
+
+        // the ONE extra node you're allowed to create
+        Node sumNode = new Node(sum);
+        sumNode.next = dh;
+        prev.next = sumNode;
+    }
+
+
+
+//AssignmentTask6
+
+
+
+   public static void pairJoin(DNode dh1, DNode dh2) {
+        // TO DO
+        DNode curr1 = dh1.next;
+</font>        DNode curr2 = dh2.next;
+        DNode tail = dh1;
+
+        while (curr1 != null &amp;&amp; curr2 != null) {
+<a name="0"></a><font color="#FF0000"><a href="match303-1.html#0" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_9.gif"/></a>
+
+            DNode next1 = curr1.next;
+            DNode next2 = curr2.next;
+            tail.next = curr1;
+            curr1.prev = tail;
+            tail = curr1;
+            tail.next = curr2;
+            curr2.prev = tail;
+            tail = curr2;
+            curr1 = next1;
+            curr2 = next2;
+        }
+        tail.next = dh1;
+        dh1.prev = tail;
+    }
+
+
+
+
+//AssignmentTask7
+
+
+    public static void rangeMove(DNode dh, int start, int end) {
+      
+        DNode curr = dh.next;
+</font>        DNode movedHead = null;
+        DNode movedTail = null;
+
+        while (curr != dh) {
+<a name="5"></a><font color="#FF0000"><a href="match303-1.html#5" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_4.gif"/></a>
+
+            DNode nextNode = curr.next;
+            int val = (int) curr.elem;
+            if (val &gt;= start &amp;&amp; val &lt;= end) {
+                curr.prev.next = curr.next;
+                curr.next.prev = curr.prev;
+</font>                if (movedHead == null) {
+                    movedHead = curr;
+                    movedTail = curr;
+                } else {
+                    movedTail.next = curr;
+                    curr.prev = movedTail;
+                    movedTail = curr;
+                }
+            }
+
+            curr = nextNode;
+        }
+        if (movedHead != null) {
+            DNode tail = dh.prev;
+            tail.next = movedHead;
+            movedHead.prev = tail;
+            movedTail.next = dh;
+            dh.prev = movedTail;
+        }
+    }
+
+</pre>
+</body>
+</html>

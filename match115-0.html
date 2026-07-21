@@ -1,0 +1,280 @@
+<html>
+<head>
+<title>A2_Sec11_23201302---TASNIM-SHAHAD-RAFI.txt</title>
+</head>
+<body bgcolor="white">
+<hr/>
+A2_Sec11_23201302---TASNIM-SHAHAD-RAFI.txt<p></p><pre>
+Tasnim Shahad Rafi
+23201302; sec-11
+
+                                                           PART-01
+                                                          ---------
+
+TASK-01
+<a name="1"></a><font color="#00FF00"><a href="match115-1.html#1" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_1_6.gif"/></a>
+
+-------
+
+public static String checkSimilar( Node building1, Node building2 ){
+        
+        //You're not suppose to create any new Linked List for this task
+        
+        //TODO
+        Node b1=building1;
+        Node b2=building2;
+        while(b1!=null &amp;&amp; b2!=null){
+            if(!b1.elem.equals(b2.elem)){
+                return "Not Similar";
+            }
+            b1=b1.next;
+            b2=b2.next;
+        }
+        if(b1==null &amp;&amp; b2==null)return "Similar";
+</font>        else return "Not Similar";
+              
+
+        //Once you're ready to return the String delete the following line
+        
+    }
+
+
+TASK-02
+-------
+
+<a name="0"></a><font color="#FF0000"><a href="match115-1.html#0" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_14.gif"/></a>
+
+public static Node organizeBooks(Node head, Integer[] popularity) {
+        
+        //TO DO
+        int n=popularity.length;
+
+        for(int i=0;i&lt;n-1;i++){            //i diye array and j diye linked list traverse korbo
+
+            Node current=head;             // protibar head fix thakbe, just curr assign korbo
+            
+            for(int j=0;j&lt;n-i-1;j++){
+                if(popularity[j]&lt;popularity[j+1]){
+                    int temp=popularity[j];
+                    popularity[j]=popularity[j+1];
+                    popularity[j+1]=temp;
+                    
+                String tempData= (String)current.elem;
+                current.elem=current.next.elem;
+                current.next.elem=tempData;
+                    
+                }
+                current=current.next;
+                
+            }
+                
+        }
+            return head;
+</font>    }
+
+TASK-03
+------
+
+public static Node alternateMerge(Node head1, Node head2) {
+
+        // You’re NOT ALLOWED to create a new singly linked list for this task
+
+        // TO DO
+        Node t1 = head1;
+        Node t2 = head2;
+        Node t1Next = t1.next;
+        Node t2Next = t2.next;
+        while (t1 != null &amp;&amp; t2 != null) {
+            t1.next = t2;
+            if (t1Next == null)
+                break;
+            t2.next = t1Next;
+            t1 = t1Next;
+            t2 = t2Next;
+            if (t1 != null) {
+                t1Next = t1.next;
+            }
+            if (t2 != null) {
+                t2Next = t2.next;
+            }
+
+        }
+
+        // remove the following line when returning the Head of the modified LinkedList
+        return head1;
+    }
+
+TASK-04
+-------
+
+<a name="8"></a><font color="#00FFFF"><a href="match115-1.html#8" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_3_3.gif"/></a>
+
+public static Node idGenerator(Node head1, Node head2, Node head3) {
+
+        // TO DO
+        // Hint: the Node elements are actually Object, you can type cast them
+        // into int or Integer like the following:
+        // (int)n.elem or (Integer)n.elem
+
+        // *** approach: first LL reverse korsi, then reverse 1st LL er last node ke
+        // tail dhorsi, erpor sum naame new node create kore tail er sathe add korsi,
+        // then tail ke update korsi, and finally return prev (new head of the reversed
+        // first list) ***
+        Node t1 = head1;
+        Node t2 = head2;
+        Node t3 = head3;
+</font>
+        Node prev = null;
+        Node curr = t1;
+        Node next = null;
+
+        while (curr != null) {
+            next = curr.next;
+<a name="4"></a><font color="#FF00FF"><a href="match115-1.html#4" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_4_3.gif"/></a>
+
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+
+        Node tail = prev;
+
+        while (tail.next != null) {
+            tail = tail.next;
+</font>        }
+
+        while (t2 != null &amp;&amp; t3 != null) {
+
+<a name="3"></a><font color="#00FFFF"><a href="match115-1.html#3" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_3_4.gif"/></a>
+
+            int sum = (((Integer) t2.elem + (Integer) t3.elem) % 10);
+
+            Node n = new Node(sum);
+
+            tail.next = n;
+            tail = n;
+
+            t2 = t2.next;
+            t3 = t3.next;
+        }
+
+        return prev;
+    }
+
+
+
+                                                            PART-02
+</font>                                                           ---------
+
+TASK-5
+------
+
+<a name="9"></a><font color="#FF00FF"><a href="match115-1.html#9" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_4_2.gif"/></a>
+
+ public static void sumOddAppend(Node dh) {
+        // TO DO
+        int sum = 0;
+        Node prev = dh;
+        Node curr = dh.next;
+        while (curr != dh) {
+            if ((Integer) curr.elem % 2 != 0) {
+</font>                sum += (Integer) curr.elem;
+<a name="5"></a><font color="#FF0000"><a href="match115-1.html#5" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_3.gif"/></a>
+
+                prev.next = curr.next;
+                curr = curr.next;
+            } else {
+                prev = curr;
+                curr = curr.next;
+            }
+        }
+
+        Node lastNode = new Node(sum);
+</font>        prev.next = lastNode;
+        lastNode.next = dh;
+
+    }
+
+TASK-06
+-------
+
+<a name="2"></a><font color="#0000FF"><a href="match115-1.html#2" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_2_4.gif"/></a>
+
+public static void pairJoin(DNode dh1, DNode dh2) {
+
+        DNode temp = dh1.next;
+        DNode curr = dh2.next;
+
+        while (temp != null &amp;&amp; curr != null) {
+
+            DNode next1 = temp.next;
+            DNode next2 = curr.next;
+</font>
+            temp.next = curr;
+            curr.prev = temp;
+
+            if (next1 != null) {
+                curr.next = next1;
+                next1.prev = curr;
+
+            }
+            temp = next1;
+<a name="6"></a><font color="#00FF00"><a href="match115-1.html#6" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_1_3.gif"/></a>
+
+            curr = next2;
+
+        }
+        // circular korar jonno last node e jawar jonno loop and tail diye save kortesi
+
+        DNode tail = dh1;
+        while (tail.next != null) {
+            tail = tail.next;
+        }
+        tail.next = dh1;
+        dh1.prev = tail;
+</font>
+    }
+
+TASK-07
+-------
+
+ public static void rangeMove(DNode dh, int start, int end) {
+        // TO DO
+        if (dh == null || dh.next == dh) {
+            return; // Empty list, kichu kora lagbe na
+        }
+
+        // infinite loop e na porar karone count kortesi
+        int count = 0;
+        DNode temp = dh.next;
+        while (temp != dh) {
+            count++;
+            temp = temp.next;
+
+        }
+
+        DNode curr = dh.next;
+        for (int i = 0; i &lt; count; i++) {
+            DNode nextNode = curr.next; // 3 jeno haraye na jay
+
+<a name="7"></a><font color="#0000FF"><a href="match115-1.html#7" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_2_3.gif"/></a>
+
+            int val = (Integer) curr.elem;
+            if (val &gt;= start &amp;&amp; val &lt;= end) {
+                // 5 ke ekdom last e niye jacchi
+                curr.prev.next = curr.next;
+                curr.next.prev = curr.prev;
+</font>
+                DNode lastNode = dh.prev;
+
+                lastNode.next = curr;
+                curr.prev = lastNode;
+                curr.next = dh;
+                dh.prev = curr;
+            }
+            curr = nextNode; // 5 theke 3 te nilam
+        }
+
+    }</pre>
+</body>
+</html>
